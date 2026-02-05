@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caregiver Guides | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --text-muted: #555555;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.7; background-color: var(--white); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* --- NAVIGATION --- */
+        header { background: var(--primary-green); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1rem; font-weight: 800; color: var(--white); text-decoration: none; text-transform: uppercase; }
+        .menu-btn { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        .btn-yellow { background: var(--accent-yellow); color: var(--primary-green); padding: 10px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+
+        /* --- HERO SECTION --- */
+        .hero { 
+            background: linear-gradient(rgba(27, 57, 27, 0.85), rgba(27, 57, 27, 0.85)), url('https://placehold.co/1200x600/1B391B/white?text=Caring+for+Loved+Ones');
+            background-size: cover; background-position: center; padding: 160px 0 80px; color: white; text-align: center;
+        }
+        .hero h1 { color: var(--accent-yellow); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 15px; }
+
+        /* --- GUIDE CATEGORIES --- */
+        .guide-section { padding: 80px 0; }
+        .guide-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; margin-top: 40px; 
+        }
+        .guide-card { 
+            background: var(--soft-bg); border-radius: 20px; padding: 40px; 
+            border-top: 6px solid var(--accent-yellow); transition: var(--transition);
+            display: flex; flex-direction: column;
+        }
+        .guide-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .guide-card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        .guide-card p { margin-bottom: 20px; color: var(--text-muted); }
+        .download-btn { 
+            margin-top: auto; color: var(--primary-green); font-weight: 700; 
+            text-decoration: none; display: flex; align-items: center; gap: 10px; 
+        }
+
+        /* --- ACTION BOX --- */
+        .support-box { 
+            background: var(--primary-green); color: white; border-radius: 25px; 
+            padding: 50px; margin: 40px 0; text-align: center;
+        }
+        .support-box h2 { color: var(--accent-yellow); margin-bottom: 20px; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .menu-btn { display: block; }
+            .nav-links { 
+                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; 
+                background: var(--primary-green); flex-direction: column; padding: 100px 40px; 
+                transition: 0.4s; z-index: 1999;
+            }
+            .nav-links.active { right: 0; }
+            .guide-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+                <div class="menu-btn" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="education.html">Education</a>
+                    <a href="warning-signs.html">Warning Signs</a>
+                    <a href="caregiver-guides.html" style="color: var(--accent-yellow);">Caregiver Guides</a>
+                    <a href="donate.html" class="btn-yellow">Donate</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Caregiver Resource Hub</h1>
+            <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">You are not alone. Access professional guides designed to help you provide the best care while maintaining your own well-being.</p>
+        </div>
+    </section>
+
+    <section class="guide-section">
+        <div class="container">
+            <h2>Essential Guides</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <h3>Physical Support</h3>
+                    <p>Learn safe techniques for assisting with mobility, preventing bedsores, and helping your loved one move safely around the home.</p>
+                    <a href="#" class="download-btn">View Guide PDF <span>→</span></a>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Communication Tips</h3>
+                    <p>Practical strategies for communicating with survivors experiencing Aphasia or speech difficulties after a stroke.</p>
+                    <a href="#" class="download-btn">View Guide PDF <span>→</span></a>
+                </div>
+
+                <div class="guide-card">
+                    <h3>Self-Care for You</h3>
+                    <p>Caregiving is demanding. Discover mental health resources and routines to help prevent caregiver burnout.</p>
+                    <a href="#" class="download-btn">View Guide PDF <span>→</span></a>
+                </div>
+            </div>
+
+            
+
+            <div class="support-box">
+                <h2>Need Direct Advice?</h2>
+                <p style="margin-bottom: 30px;">Our support team is available to answer specific questions regarding home-based care in Rwanda.</p>
+                <a href="index.html#contact" class="btn-yellow" style="font-size: 1.1rem; padding: 15px 40px;">Contact a Specialist</a>
+            </div>
+
+            <div style="margin-top: 60px;">
+                <h2>Daily Care Checklist</h2>
+                <p>Use this simple checklist to stay organized with daily medications and rehabilitation exercises.</p>
+                <div style="background: var(--soft-bg); padding: 30px; border-radius: 15px; margin-top: 20px;">
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">☐ Morning Medication & Blood Pressure Check</li>
+                        <li style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">☐ 15 Minutes of Assisted Stretching</li>
+                        <li style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">☐ Hydration & High-Fiber Meals</li>
+                        <li style="margin-bottom: 10px; padding-bottom: 10px;">☐ Afternoon Speech Practice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-green); color: white; padding: 50px 0; text-align: center;">
+        <p>&copy; 2026 Stroke Action Rwanda. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

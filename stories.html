@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Stories | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- SHARED CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --text-muted: #555555;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; background-color: var(--white); }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 30px; }
+        .section-padding { padding: 80px 0; }
+        
+        /* --- SHARED NAVIGATION --- */
+        header { background: var(--primary-green); padding: 20px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.2rem; font-weight: 800; color: var(--white); text-transform: uppercase; text-decoration: none; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-yellow); }
+        .btn-yellow { background: var(--accent-yellow); color: var(--primary-green); padding: 10px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- STORIES PAGE SPECIFIC STYLES --- */
+        .page-header { 
+            background: linear-gradient(rgba(27, 57, 27, 0.8), rgba(27, 57, 27, 0.8)), url('https://placehold.co/1200x600/1B391B/white?text=Voices+of+Hope');
+            background-size: cover;
+            background-position: center;
+            padding: 160px 0 100px;
+            color: white;
+            text-align: center;
+        }
+        .page-header h1 { color: var(--accent-yellow); font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 20px; }
+
+        /* Featured Stories Grid */
+        .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 50px; }
+        .story-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: var(--transition); border-bottom: 4px solid var(--accent-yellow); }
+        .story-card:hover { transform: translateY(-10px); }
+        .story-img { width: 100%; height: 250px; object-fit: cover; }
+        .story-body { padding: 30px; }
+        .story-tag { background: var(--soft-bg); color: var(--primary-green); padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+
+        /* Video Section */
+        .video-section { background: var(--primary-green); color: white; border-radius: 25px; padding: 60px; margin: 60px 0; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* Photo Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+        .gallery-item { position: relative; height: 300px; border-radius: 12px; overflow: hidden; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover img { transform: scale(1.1); filter: brightness(0.7); }
+        .gallery-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; opacity: 0; transition: 0.3s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 1024px) {
+            .menu-toggle { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--primary-green); padding: 20px; }
+            .nav-links.active { display: flex; }
+            .video-section { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+               <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 60px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="prevention.html">Prevention</a>
+                    <a href="support.html">Support</a>
+                    <a href="stories.html" style="color: var(--accent-yellow);">Stories</a>
+                    <a href="donate.html" class="btn-yellow">Donate</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Real Stories. Real Impact. </h1>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: rgba(255,255,255,0.9);">
+                Personal stories from stroke survivors, caregivers, and health workers highlighting resilience, recovery, and hope.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2>Featured Narratives </h2>
+            <div class="featured-grid">
+                <div class="story-card">
+                    <img src="25/35.jpeg" class="story-img" alt="Stroke Survivor">
+                    <div class="story-body">
+                        <span class="story-tag">Survivor</span>
+                        <h3>Overcoming the Odds</h3>
+                        <p>Explore how survivors across Rwanda are navigating their journey to recovery with resilience and community support. </p>
+                        <a href="#" style="color: var(--primary-green); font-weight: 700; text-decoration: none; display: inline-block; margin-top: 15px;">Read Full Story →</a>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <img src="https://placehold.co/600x400/F2D022/1B391B?text=Caregiver+Voice" class="story-img" alt="Caregiver Support">
+                    <div class="story-body">
+                        <span class="story-tag">Caregiver</span>
+                        <h3>The Strength of Families</h3>
+                        <p>A heartfelt look into the lives of those providing long-term care and the emotional bonds that drive recovery.</p>
+                        <a href="#" style="color: var(--primary-green); font-weight: 700; text-decoration: none; display: inline-block; margin-top: 15px;">Read Full Story →</a>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <img src="25/36.jpeg" class="story-img" alt="Healthcare Professional">
+                    <div class="story-body">
+                        <span class="story-tag">Health Professional</span>
+                        <h3>Frontline Perspectives</h3>
+                        <p>How health workers are witnessing the transformation of stroke care and advocacy in local communities.</p>
+                        <a href="#" style="color: var(--primary-green); font-weight: 700; text-decoration: none; display: inline-block; margin-top: 15px;">Read Full Story →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-section">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="color: var(--accent-yellow);">Video Spotlight</h2>
+                    <p>Watch our latest awareness campaigns and community outreach activities in action. </p>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/yRlYczMNItg" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px;">
+                <h2 style="text-align: center;">Our Journey in Photos</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="25/22.jpeg" alt="Awareness Walk">
+                        <div class="gallery-overlay"><h4>Awareness Campaign</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="25/21.jpeg" alt="Training Session">
+                        <div class="gallery-overlay"><h4>Health Training</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="25/23.jpeg" alt="Support Group">
+                        <div class="gallery-overlay"><h4>Survivor Support</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="25/25.jpeg" alt="Community Event">
+                        <div class="gallery-overlay"><h4>Community Outreach</h4></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-green); color: white; padding: 60px 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 Stroke Action Rwanda. All rights reserved.</p>
+            <div style="margin-top: 20px;">
+                <a href="https://www.youtube.com/@250SAR" style="color: var(--accent-yellow); margin: 0 10px;">YouTube</a> 
+                <a href="https://x.com/strokeaction_rw?s=11" style="color: var(--accent-yellow); margin: 0 10px;">X (Twitter)</a> 
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

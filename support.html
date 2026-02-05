@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & Recovery | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- SHARED CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --text-muted: #555555;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; background-color: var(--white); }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 30px; }
+        .section-padding { padding: 80px 0; }
+        
+        /* --- SHARED NAVIGATION --- */
+        header { background: var(--primary-green); padding: 20px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.2rem; font-weight: 800; color: var(--white); text-transform: uppercase; text-decoration: none; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-yellow); }
+        .btn-yellow { background: var(--accent-yellow); color: var(--primary-green); padding: 10px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- SUPPORT PAGE SPECIFIC STYLES --- */
+        .page-header { 
+            background: linear-gradient(rgba(27, 57, 27, 0.85), rgba(27, 57, 27, 0.85)), url('https://placehold.co/1200x400/1B391B/white?text=Recovery+Is+Possible');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 80px;
+            color: white;
+            text-align: center;
+        }
+        .page-header h1 { color: var(--accent-yellow); font-size: 3rem; margin-bottom: 20px; }
+
+        .support-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .support-card { padding: 40px; border-radius: 12px; background: white; border: 1px solid #eee; transition: var(--transition); }
+        .support-card:hover { transform: translateY(-5px); border-color: var(--accent-yellow); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .support-card h3 { color: var(--primary-green); margin-bottom: 20px; border-bottom: 2px solid var(--accent-yellow); display: inline-block; }
+        
+        .resource-list { list-style: none; margin-top: 20px; }
+        .resource-list li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+        .resource-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-yellow); font-weight: bold; }
+
+        .cta-box { background: var(--soft-bg); padding: 60px; border-radius: 20px; text-align: center; margin-top: 60px; border: 2px dashed #ddd; }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 1024px) {
+            .menu-toggle { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--primary-green); padding: 20px; }
+            .nav-links.active { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 60px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="prevention.html">Prevention</a>
+                    <a href="support.html" style="color: var(--accent-yellow);">Support</a>
+                    <a href="donate.html" class="btn-yellow">Donate</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Support & Recovery</h1>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: rgba(255,255,255,0.9);">
+                Recovery is possible.We provide the tools, community, and expert guidance needed for survivors and families to navigate life after stroke.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2>How We Help</h2>
+            <p>Stroke Action Rwanda provides advocacy for stroke treatment, rehabilitation, and comprehensive long-term care.</p>
+            
+            <div class="support-grid">
+                <div class="support-card">
+                    <h3>For Survivors</h3>
+                    <p>Information on rehabilitation and living well after stroke.</p>
+                    <ul class="resource-list">
+                        <li>Rehabilitation Resources </li>
+                        <li>Community Assistance </li>
+                        <li>Long-term Care Guidance </li>
+                        <li>Physical Recovery Programs </li>
+                    </ul>
+                </div>
+
+                <div class="support-card">
+                    <h3>For Caregivers</h3>
+                    <p>Guidance, education, and emotional support for those caring for stroke survivors.</p>
+                    <ul class="resource-list">
+                        <li>Caregiver Education Guides </li>
+                        <li>Emotional Support Groups </li>
+                       <li>Home Care Tips </li>
+                        <li>Respite Resources </li>
+                    </ul>
+                </div>
+
+                <div class="support-card">
+                    <h3>For Professionals</h3>
+                    <p>Resources and partnerships to improve stroke outcomes across Rwanda.</p>
+                    <ul class="resource-list">
+                        <li>Advocacy Tools </li>
+                       <li>Clinical Partnerships </li>
+                        <li>Evidence-based Care Guidelines </li>
+                       <li>Professional Workshops </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h2>Need Personal Assistance?</h2>
+                <p style="margin-bottom: 30px;">If you are looking for specific community assistance or have questions about our support programs, please reach out.</p>
+                <a href="contact.html" class="btn-yellow" style="display: inline-block;">Request Support or Contact Us </a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-green); color: white; padding: 60px 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 Stroke Action Rwanda. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

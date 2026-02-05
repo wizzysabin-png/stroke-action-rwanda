@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Education | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- SHARED CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; background-color: var(--white); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 60px 0; }
+        
+        /* --- NAVIGATION --- */
+        header { background: var(--primary-green); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
+        nav { display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo { font-size: 1.1rem; font-weight: 800; color: var(--white); text-transform: uppercase; text-decoration: none; z-index: 2001; }
+        
+        /* Mobile Menu Toggle */
+        .menu-btn { display: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 2001; }
+
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-yellow); }
+        .btn-yellow { background: var(--accent-yellow); color: var(--primary-green); padding: 10px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; text-align: center; }
+
+        /* --- EDUCATION SPECIFIC --- */
+        .page-header { 
+            background: linear-gradient(rgba(27, 57, 27, 0.8), rgba(27, 57, 27, 0.8)), url('https://placehold.co/1200x600/1B391B/white?text=Empower+Through+Knowledge');
+            background-size: cover; background-position: center; padding: 140px 0 80px; color: white; text-align: center;
+        }
+        .page-header h1 { color: var(--accent-yellow); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 10px; }
+
+        .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .edu-card { background: var(--soft-bg); border-radius: 15px; overflow: hidden; border: 1px solid #eee; transition: var(--transition); display: flex; flex-direction: column; }
+        .edu-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .edu-content { padding: 25px; flex-grow: 1; }
+        .edu-image { width: 100%; height: 220px; object-fit: cover; }
+
+        .study-options { background: var(--primary-green); color: white; border-radius: 20px; padding: 40px; margin: 60px 0; display: flex; gap: 25px; flex-wrap: wrap; }
+        .option-box { flex: 1; min-width: 260px; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 12px; border-left: 4px solid var(--accent-yellow); display: flex; flex-direction: column; justify-content: space-between; }
+        .option-box h3 { color: var(--accent-yellow); margin-bottom: 15px; }
+
+        .video-tape-section { margin-top: 60px; }
+        .video-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .video-thumb { position: relative; border-radius: 10px; overflow: hidden; background: #000; height: 180px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .play-btn { font-size: 3rem; color: var(--accent-yellow); opacity: 0.8; transition: 0.3s; }
+        .video-thumb:hover .play-btn { opacity: 1; transform: scale(1.1); }
+
+        /* --- RESPONSIVE BREAKPOINTS --- */
+        @media (max-width: 992px) {
+            .menu-btn { display: block; }
+            .nav-links { 
+                position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; 
+                background: var(--primary-green); flex-direction: column; padding: 100px 30px; 
+                transition: 0.5s; box-shadow: -10px 0 30px rgba(0,0,0,0.3); 
+            }
+            .nav-links.active { right: 0; }
+            .study-options { padding: 30px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .page-header { padding: 120px 0 60px; }
+            .option-box { min-width: 100%; }
+            .btn-yellow { width: 100%; display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+                <div class="menu-btn" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="prevention.html">Prevention</a>
+                    <a href="education.html" style="color: var(--accent-yellow);">Education</a>
+                    <a href="support.html">Support</a>
+                    <a href="donate.html" class="btn-yellow">Donate Now</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Stroke Education Center</h1>
+            <p>Empowering Rwanda through knowledge and professional training.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2>Learn About Stroke</h2>
+            <p style="max-width: 800px;">Education is the first step toward prevention and effective recovery. Our curriculum covers biological causes, nutrition, and support.</p>
+            
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <img src="https://placehold.co/600x400/1B391B/white?text=Brain+Health" class="edu-image">
+                    <div class="edu-content">
+                        <h3>Understanding the Brain</h3>
+                        <p>Learn how strokes affect different parts of the brain and what that means for physical function.</p>
+                    </div>
+                </div>
+                <div class="edu-card">
+                    <img src="https://placehold.co/600x400/F2D022/1B391B?text=Nutrition+Care" class="edu-image">
+                    <div class="edu-content">
+                        <h3>Post-Stroke Nutrition</h3>
+                        <p>Specialized dietary guidance to prevent secondary strokes and improve the healing process.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="study-options">
+                <div style="width: 100%; text-align: center; margin-bottom: 10px;">
+                    <h2 style="color: white;">Study Pathways</h2>
+                    <p>Flexible learning for everyone in Rwanda.</p>
+                </div>
+                <div class="option-box">
+                    <div>
+                        <h3>Live Workshops</h3>
+                        <p>Hands-on training sessions with medical experts in Kigali.</p>
+                    </div>
+                    <a href="index.html#contact" class="btn-yellow" style="margin-top: 20px;">Register Live</a>
+                </div>
+                <div class="option-box">
+                    <div>
+                        <h3>Online Portal</h3>
+                        <p>Access our digital library and webinar recordings anywhere.</p>
+                    </div>
+                    <a href="portal.html" class="btn-yellow" style="margin-top: 20px; background: white;">Access Online</a>
+                </div>
+            </div>
+
+            <div class="video-tape-section">
+                <h2>Educational Videos</h2>
+                <div class="video-row">
+                    <div>
+                        <div class="video-thumb">
+                            <span class="play-btn">▶</span>
+                        </div>
+                        <h4 style="margin-top: 15px;">Signs in Kinyarwanda</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">Local community awareness.</p>
+                    </div>
+                    <div>
+                        <div class="video-thumb">
+                            <span class="play-btn">▶</span>
+                        </div>
+                        <h4 style="margin-top: 15px;">Physical Therapy Tips</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">Home-based recovery exercises.</p>
+                    </div>
+                    <div>
+                        <div class="video-thumb">
+                            <span class="play-btn">▶</span>
+                        </div>
+                        <h4 style="margin-top: 15px;">Emergency Actions</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">What to do in the first hour.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-green); color: white; padding: 40px 0; text-align: center; border-top: 4px solid var(--accent-yellow);">
+        <p>&copy; 2026 Stroke Action Rwanda. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

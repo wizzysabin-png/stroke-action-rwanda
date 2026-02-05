@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- SHARED CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --text-muted: #555555;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; background-color: var(--white); }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 30px; }
+        .section-padding { padding: 80px 0; }
+        
+        /* --- SHARED NAVIGATION --- */
+        header { background: var(--primary-green); padding: 20px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.2rem; font-weight: 800; color: var(--white); text-transform: uppercase; text-decoration: none; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-yellow); }
+        .btn-yellow { background: var(--accent-yellow); color: var(--primary-green); padding: 10px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- GALLERY PAGE SPECIFIC STYLES --- */
+        .page-header { 
+            background: linear-gradient(rgba(17, 37, 27, 0.5), rgba(17, 37, 27, 0.5)), url('25/17.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 160px 0 100px;
+            color: white;
+            text-align: center;
+        }
+        .page-header h1 { color: var(--accent-yellow); font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 20px; }
+
+        /* Filter Tabs */
+        .gallery-filters { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap; }
+        .filter-btn { padding: 10px 25px; border-radius: 50px; border: 2px solid var(--primary-green); background: transparent; color: var(--primary-green); font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary-green); color: white; }
+
+        /* Photo Grid */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .gallery-item { position: relative; height: 350px; border-radius: 15px; overflow: hidden; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .gallery-item:hover img { transform: scale(1.1); filter: brightness(0.6); }
+        
+        .gallery-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; opacity: 0; transition: 0.4s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h4 { color: var(--accent-yellow); margin-bottom: 5px; font-size: 1.2rem; }
+        .gallery-overlay p { font-size: 0.85rem; line-height: 1.4; }
+
+        /* Video Gallery Section */
+        .video-highlight { background: var(--soft-bg); padding: 80px 0; border-radius: 40px; margin: 60px 0; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-top: 40px; }
+        .video-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-info { padding: 25px; }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 1024px) {
+            .menu-toggle { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--primary-green); padding: 20px; }
+            .nav-links.active { display: flex; }
+            .video-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 60px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="prevention.html">Prevention</a>
+                    <a href="support.html">Support</a>
+                    <a href="stories.html">Stories</a>
+                    <a href="gallery.html" style="color: var(--accent-yellow);">Gallery</a>
+                    <a href="donate.html" class="btn-yellow">Donate</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Community in Action</h1>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: rgba(255,255,255,0.9);">
+                A glimpse into our workshops, awareness campaigns, and the resilience of the communities we serve across Rwanda.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active">All Photos</button>
+                <button class="filter-btn">Awareness Campaigns</button>
+                <button class="filter-btn">Workshops</button>
+                <button class="filter-btn">Survivor Support</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="25/16.jpeg" alt="Public Awareness Event">
+                    <div class="gallery-overlay">
+                        <h4>National Awareness Walk</h4>
+                        <p>Joining forces to educate the public on stroke prevention signs.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="25/6.jpg" alt="Healthcare Professional Training">
+                    <div class="gallery-overlay">
+                        <h4>Professional Training</h4>
+                        <p>Equipping Rwandan health professionals with evidence-based care skills.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="25/15.jpeg" alt="Stroke Survivor Group">
+                    <div class="gallery-overlay">
+                        <h4>Survivor Peer Group</h4>
+                        <p>A community of hope and mutual support for long-term recovery.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="25/18.jpeg" alt="Rural Community Outreach">
+                    <div class="gallery-overlay">
+                        <h4>Rural Outreach</h4>
+                        <p>Bringing stroke education to underserved regions across Rwanda.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="25/10.jpg" alt="Stroke Action Rwanda Volunteers">
+                    <div class="gallery-overlay">
+                        <h4>Volunteer Impact</h4>
+                        <p>Our dedicated team working on national awareness efforts.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="25/3.jpg" alt="Family Support Session">
+                    <div class="gallery-overlay">
+                        <h4>Family Support</h4>
+                        <p>Guidance and emotional support for families and caregivers.</p>
+                    </div>
+                </div>
+            </div>
+
+<section class="section-padding" style="background: var(--soft-bg); border-radius: 40px; margin-bottom: 60px;">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2>Our Leadership Team</h2>
+            <p>The dedicated individuals driving our mission forward.</p>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 50px;">
+            <div class="gallery-item" style="width: 350px; height: 450px;">
+                <img src="admin/1.jpeg" alt="President">
+                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 37, 37, 0.2);">
+                    <h4>Dr. Joseph RUKELIBUGA</h4>
+                    <p>Founder & President <br>Stroke Action Rwanda</p>
+                </div>
+            </div>
+            <div class="gallery-item" style="width: 350px; height: 450px;">
+                <img src="admin/2.jpeg" alt="Vice President">
+                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 37, 37, 0.3);">
+                    <h4>Ms. Alexia UWAJENEZA</h4>
+                    <p>Vice President <br>Stroke Action Rwanda</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" style="height: 400px;">
+                <img src="admin/3.jpeg" alt="Executive Director">
+                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
+                    <h4>Mr. Charles Karangwa</h4>
+                    <p>Executive Director <br>Stroke Action Rwanda</p>
+                </div>
+            </div>
+
+<div class="gallery-item" style="height: 400px;">
+                <img src="admin/9.jpeg" alt="Executive Secretary">
+                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
+                    <h4>Mr. Sylvere Mudendeli </h4>
+                    <p> Director of programs  <br>Stroke Action Rwanda</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" style="height: 400px;">
+                <img src="admin/5.jpeg" alt="Executive Secretary">
+                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
+                    <h4>Mr. Jean Paul Hakizimana</h4>
+                    <p>PT Executive Secretary <br>Stroke Action Rwanda</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" style="height: 400px;">
+                <img src="admin/6.jpeg" alt="Communication Officer">
+                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
+                    <h4>Mr. Ghislain Mutabaruka</h4>
+                    <p>Communication Officer <br>Stroke Action Rwanda</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" style="height: 400px;">
+                <img src="admin/4.jpeg" alt="Conflict Resolution">
+                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
+                    <h4>Mr. Robert Twongyeirwe</h4>
+                    <p>Chair, Conflict Resolution <br>Stroke Action Rwanda</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" style="height: 400px;">
+                <img src="admin/7.jpeg" alt="Audit Committee">
+                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
+                    <h4>Mr. Silas Mutsindashyaka</h4>
+                    <p>Chair, Audit Committee <br>Stroke Action Rwanda</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" style="height: 400px;">
+                <img src="admin/8.jpeg" alt="Accountant">
+                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
+                    <h4>Ms. Épiphanie Akimanizanye</h4>
+                    <p>Accountant <br>Stroke Action Rwanda</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+            <div class="video-highlight">
+                <div class="container">
+                    <div style="text-align: center; margin-bottom: 50px;">
+                        <h2>Video Media</h2>
+                        <p>Watch our impact stories and educational content.</p>
+                    </div>
+                    
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/WcOPlILft5s" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-info">
+                                <h4>Our Mission in Rwanda</h4>
+                                <p>An overview of how we combat stroke through prevention and care.</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/jXLdqgcyIiw" allowfullscreen></iframe>
+                            </div>
+                            <div class="video-info">
+                                <h4>Survivor Testimonials</h4>
+                                <p>Real stories of resilience from our community members.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-green); color: white; padding: 60px 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 Stroke Action Rwanda. All rights reserved.</p>
+            <div style="margin-top: 20px;">
+                <a href="https://www.youtube.com/@250SAR" style="color: var(--accent-yellow); margin: 0 15px; text-decoration: none;">YouTube </a>
+                <a href="https://x.com/strokeaction_rw?s=11" style="color: var(--accent-yellow); margin: 0 15px; text-decoration: none;">X (Twitter) </a>
+                <a href="https://www.instagram.com/strokeaction_rw?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" style="color: var(--accent-yellow); margin: 0 15px; text-decoration: none;">Instagram</a>
+                <a href="https://www.facebook.com/share/1C4ojJXViC/?mibextid=wwXIfr" style="color: var(--accent-yellow); margin: 0 15px; text-decoration: none;">Facebook </a>
+                 <a href="https://www.threads.com/@strokeaction_rw?igshid=NTc4MTIwNjQ2YQ==" style="color: var(--accent-yellow); margin: 0 15px; text-decoration: none;"> Thread</a>
+                  <a href="https://linktr.ee/strokeaction_rw" style="color: var(--accent-yellow); margin: 0 15px; text-decoration: none;">Linktr.ee</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

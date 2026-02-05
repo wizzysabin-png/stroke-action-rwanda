@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Updates | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- BRANDING VARIABLES (Matches Homepage) --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --text-muted: #555555;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; overflow-x: hidden; background-color: var(--white); }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; width: 100%; }
+        
+        /* --- NAVIGATION (Consistent with Home) --- */
+        header { background: var(--primary-green); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 2000; box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1rem; font-weight: 800; color: var(--white); text-transform: uppercase; display: flex; align-items: center; }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .menu-toggle { display: none; color: white; font-size: 1.8rem; cursor: pointer; }
+
+        /* --- NEWS HERO --- */
+        .news-hero { 
+            padding-top: 160px; 
+            padding-bottom: 60px; 
+            background: linear-gradient(rgba(27, 57, 27, 0.05), rgba(242, 208, 34, 0.05));
+            text-align: center; 
+        }
+        .news-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 10px; }
+        .breadcrumb { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
+
+        /* --- FEATURED POST --- */
+        .featured-section { padding: 60px 0; }
+        .featured-card { 
+            display: flex; 
+            background: var(--white); 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            flex-wrap: wrap;
+        }
+        .featured-img { flex: 1.2; min-width: 350px; min-height: 300px; }
+        .featured-img img { width: 100%; height: 100%; object-fit: cover; }
+        .featured-content { flex: 1; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .tag { background: var(--accent-yellow); color: var(--primary-green); padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; width: fit-content; margin-bottom: 20px; }
+
+        /* --- NEWS GRID --- */
+        .news-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 40px; 
+            padding: 60px 0 100px;
+        }
+        .news-card { 
+            background: var(--white); 
+            border-radius: 15px; 
+            overflow: hidden; 
+            transition: var(--transition);
+            border: 1px solid #eee;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .news-card img { width: 100%; height: 220px; object-fit: cover; }
+        .news-card-body { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .news-date { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; display: block; }
+        .news-card h3 { margin-bottom: 15px; font-size: 1.3rem; line-height: 1.4; }
+        .news-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+        .read-more { color: var(--primary-green); font-weight: 700; text-decoration: none; margin-top: auto; }
+
+        /* --- FOOTER (Same as Home) --- */
+        footer { background: var(--primary-green); color: var(--white); padding: 80px 0 30px; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; }
+        .footer-col h4 { color: var(--accent-yellow); margin-bottom: 25px; font-size: 0.9rem; text-transform: uppercase; }
+        .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 1024px) {
+            .menu-toggle { display: block; }
+            .nav-links { 
+                display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; 
+                background: var(--primary-green); padding: 30px; 
+            }
+            .nav-links.active { display: flex; }
+        }
+
+        @media (max-width: 768px) {
+            .featured-img { min-width: 100%; }
+            .featured-content { padding: 30px; }
+            .news-grid { grid-template-columns: 1fr; }
+            .news-hero { padding-top: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="photo/logo.jpeg" alt="Logo" style="height: 50px; vertical-align: middle; margin-right: 10px;">
+                    Stroke Action Rwanda
+                </div>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="prevention.html">Prevention</a>
+                    <a href="news.html" style="color: var(--accent-yellow);">News</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="donate.html" style="background: var(--accent-yellow); color: var(--primary-green); padding: 10px 20px; border-radius: 5px; font-weight: 700;">Donate</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="news-hero">
+            <div class="container">
+                <span class="breadcrumb">Home / News</span>
+                <h1>Latest Updates</h1>
+                <p>Stay informed about our community work and stroke awareness in Rwanda.</p>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <div class="container">
+                <div class="featured-card">
+                    <div class="featured-img">
+                        <img src="25/3.jpg" alt="Featured News">
+                    </div>
+                    <div class="featured-content">
+                        <span class="tag">Major Event</span>
+                        <h2>World Stroke Day 2025: A Huge Success in Kigali</h2>
+                        <p>On October 29, 2025, Stroke Action Rwanda, in partnership with RBC, UPHLS, PSF, and RNCDA, commemorated World Stroke Day to strengthen awareness and promote stroke prevention. The event emphasized early recognition, rapid response, and collaborative action to reduce stroke-related deaths and disabilities in Rwanda..</p>
+                        <a href="#" class="read-more">Read Full Story &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="news-grid">
+                
+                <div class="news-card">
+                    <img src="photo/1.jpg" alt="Community Workshop">
+                    <div class="news-card-body">
+                        <span class="news-date">February 01, 2021</span>
+                        <h3>StrokeAction RNCDA Workshop_2021</h3>
+                        <p>On November 13, 2021, Stroke Action Rwanda delegated two of its members to participate in a
+workshop at Galaxy Hotel, organized under the ‘Our Views, Our Voices’ initiative. This global
+program fosters the meaningful engagement of people living with noncommunicable diseases
+(NCDs) in shaping health policies and responses. It empowers participants to share lived
+experiences, advocate for improved care, influence decision-making, and contribute to the
+reduction of stigma and discrimination. The workshop was convened by the Rwanda NCD Alliance
+to enhance knowledge and capacity in NCDadvocacy andpolicy engagement.</p>
+                        <a href="#" class="read-more">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <img src="25/35.jpeg" alt="Survivor Story">
+                    <div class="news-card-body">
+                        <span class="news-date">January 20, 2026</span>
+                        <h3>Survivor Profile: Hope After Recovery</h3>
+                        <p>My name is Alexia Uwajeneza, and I am 46 years old. I have been living with the effects of a stroke for more than 12.5 years.
+Before my stroke, I lived a full and stable life. I had a happy family and worked as a midwife. On Sunday, December 19, 2010, at approximately 8:00 a.m., while rushing to attend the first Mass, I suddenly felt extreme weakness and severe dizziness. I lost consciousness shortly afterward.
+My husband immediately took me to the nearest private clinic in Muhanga, where I received first aid and briefly regained consciousness. Due to the severity of my condition, I was referred to Kabgayi Hospital. When doctors there were unable to determine the cause of my symptoms, I was referred again to CHUK. Unfortunately, due to overcrowding, I had to wait for an available room. During this time, I stayed with a friend who lived near the hospital.</p>
+                        <a href="#" class="read-more">Read Story</a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <img src="25/12.jpg" alt="Donation Update">
+                    <div class="news-card-body">
+                        <span class="news-date">January 05, 2026</span>
+                        <h3>How Your Donations Provided 50 Wheelchairs</h3>
+                        <p>Thanks to your generous donations, 50 individuals living with mobility challenges—many of them stroke survivors—have received wheelchairs that are transforming their daily lives. Your support made it possible to identify those most in need, purchase quality wheelchairs, and deliver them directly to patients and families who previously struggled with limited or no mobility support.
+
+For many recipients, these wheelchairs mean more than movement—they represent dignity, independence, and renewed hope. Beneficiaries can now move safely within their homes, attend medical appointments, participate in community life, and rely less on others for basic daily activities.
+Your kindness didn’t just provide wheelchairs—it restored independence and hope. 💙</p>
+                        <a href="#" class="read-more">View Impact</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Stroke Action Rwanda</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Saving lives through education and support.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Kigali, Rwanda<br> strokeactionaction@gmail.Com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <a href="https://www.facebook.com/share/1C4ojJXViC/?mibextid=wwXIfr" style="margin-right: 10px;">Facebook</a>
+                    <a href="https://x.com/strokeaction_rw?s=11">Twitter</a>
+                    <a href="https://www.instagram.com/strokeaction_rw?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Instagram</a>
+                    <a href="https://www.youtube.com/@250SAR">Youtube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>

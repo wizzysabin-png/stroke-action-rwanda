@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Involved | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- SHARED CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; background-color: var(--white); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 80px 0; }
+        
+        /* --- NAVIGATION --- */
+        header { background: var(--primary-green); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1rem; font-weight: 800; color: var(--white); text-transform: uppercase; text-decoration: none; z-index: 2001; }
+        .menu-btn { display: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 2001; }
+
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        .nav-links a:hover { color: var(--accent-yellow); }
+        .btn-yellow { background: var(--accent-yellow); color: var(--primary-green); padding: 10px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; text-align: center; }
+
+        /* --- HERO SECTION --- */
+        .page-header { 
+            background: linear-gradient(rgba(27, 57, 27, 0.8), rgba(27, 57, 27, 0.8)), url('https://placehold.co/1200x500/1B391B/white?text=Join+The+Movement');
+            background-size: cover; background-position: center; padding: 160px 0 80px; color: white; text-align: center;
+        }
+        .page-header h1 { color: var(--accent-yellow); font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 10px; }
+
+        /* --- GET INVOLVED CARDS --- */
+        .involve-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .involve-card { 
+            background: var(--soft-bg); border-radius: 20px; padding: 45px; 
+            border: 1px solid #eee; transition: var(--transition);
+            display: flex; flex-direction: column; align-items: flex-start;
+        }
+        .involve-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--accent-yellow); }
+        .involve-card h3 { font-size: 1.6rem; margin-bottom: 15px; }
+        .involve-card p { margin-bottom: 25px; color: #555; }
+        
+        .badge { background: var(--primary-green); color: var(--accent-yellow); padding: 5px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
+
+        /* --- PARTNERSHIP BANNER --- */
+        .partner-banner { background: var(--primary-green); color: white; border-radius: 30px; padding: 60px; margin: 60px 0; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+        .partner-text { flex: 1; min-width: 300px; }
+        .partner-text h2 { color: var(--accent-yellow); margin-bottom: 20px; }
+
+        /* --- RESPONSIVE BREAKPOINTS --- */
+        @media (max-width: 992px) {
+            .menu-btn { display: block; }
+            .nav-links { 
+                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; 
+                background: var(--primary-green); flex-direction: column; padding: 100px 40px; 
+                transition: 0.5s; box-shadow: -10px 0 30px rgba(0,0,0,0.3); 
+            }
+            .nav-links.active { right: 0; }
+            .involve-grid { grid-template-columns: 1fr; }
+            .partner-banner { padding: 40px 25px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+                <div class="menu-btn" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="education.html">Education</a>
+                    <a href="get-involved.html" style="color: var(--accent-yellow);">Get Involved</a>
+                    <a href="rehabilitation.html">Rehab</a>
+                    <a href="donate.html" class="btn-yellow">Donate Now</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Make an Impact</h1>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem;">Whether you have time, skills, or resources, there is a place for you in our mission to fight stroke in Rwanda.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="involve-grid">
+                <div class="involve-card">
+                    <span class="badge">Community</span>
+                    <h3>Volunteer With Us</h3>
+                    <p>Join our team on the ground. We need help with community screenings, event organizing, and administrative support in Kigali.</p>
+                    <a href="volunteer-app.html" class="btn-yellow">Apply to Volunteer</a>
+                </div>
+
+                <div class="involve-card">
+                    <span class="badge">Awareness</span>
+                    <h3>Become an Advocate</h3>
+                    <p>Help us spread the B.E. F.A.S.T. message. Share resources in your workplace, church, or social media to save lives through education.</p>
+                    <a href="signs.html" class="btn-yellow" style="background: var(--primary-green); color: white;">Get Resources</a>
+                </div>
+
+                <div class="involve-card">
+                    <span class="badge">Medical</span>
+                    <h3>Healthcare Partners</h3>
+                    <p>Are you a doctor, nurse, or therapist? Share your expertise through our training programs or volunteer clinics.</p>
+                    <a href="volunteer-app.html" class="btn-yellow">Professional Inquiry</a>
+                </div>
+            </div>
+
+            <div class="partner-banner">
+                <div class="partner-text">
+                    <h2>Corporate Partnerships</h2>
+                    <p>We work with organizations that share our commitment to Rwandan health. Partner with us for Corporate Social Responsibility (CSR) initiatives that create lasting change.</p>
+                </div>
+                <div style="flex: 0 0 auto;">
+                    <a href="partner.html" class="btn-yellow" style="padding: 15px 40px; font-size: 1.1rem; background: white;">Partner With Us</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <h2>Other Ways to Help</h2>
+                <p style="margin-bottom: 30px;">Every bit of support counts toward a stroke-free Rwanda.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <div style="padding: 20px; border: 1px dashed var(--primary-green); border-radius: 10px; min-width: 200px;">
+                        <h4>Fundraise</h4>
+                        <p style="font-size: 0.8rem;">Host an event for us.</p>
+                    </div>
+                    <div style="padding: 20px; border: 1px dashed var(--primary-green); border-radius: 10px; min-width: 200px;">
+                        <h4>Donate Equipment</h4>
+                        <p style="font-size: 0.8rem;">Walkers, wheelchairs, etc.</p>
+                    </div>
+                    <div style="padding: 20px; border: 1px dashed var(--primary-green); border-radius: 10px; min-width: 200px;">
+                        <h4>Legacy Giving</h4>
+                        <p style="font-size: 0.8rem;">Include us in your will.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-green); color: white; padding: 50px 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 Stroke Action Rwanda. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rehabilitation | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- SHARED CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; background-color: var(--white); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 80px 0; }
+        
+        /* --- NAVIGATION --- */
+        header { background: var(--primary-green); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1rem; font-weight: 800; color: var(--white); text-transform: uppercase; text-decoration: none; z-index: 2001; }
+        .menu-btn { display: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 2001; }
+
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        .nav-links a:hover { color: var(--accent-yellow); }
+        .btn-yellow { background: var(--accent-yellow); color: var(--primary-green); padding: 10px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+
+        /* --- REHAB SPECIFIC --- */
+        .rehab-header { 
+            background: linear-gradient(rgba(27, 57, 27, 0.7), rgba(27, 57, 27, 0.7)), url('https://placehold.co/1200x500/1B391B/white?text=Path+to+Recovery');
+            background-size: cover; background-position: center; padding: 160px 0 80px; color: white; text-align: center;
+        }
+        .rehab-header h1 { color: var(--accent-yellow); font-size: clamp(2.2rem, 5vw, 3.5rem); }
+
+        /* Therapy Cards */
+        .therapy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .therapy-card { 
+            background: var(--white); border-radius: 20px; padding: 40px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; 
+            text-align: center; transition: var(--transition);
+        }
+        .therapy-card:hover { transform: translateY(-10px); border-color: var(--accent-yellow); }
+        .icon-circle { 
+            width: 70px; height: 70px; background: var(--soft-bg); border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            margin: 0 auto 20px; font-size: 1.5rem;
+        }
+
+        /* Recovery Timeline */
+        .timeline-section { background: var(--soft-bg); padding: 80px 0; border-radius: 40px; margin: 40px 0; }
+        .timeline-container { display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 40px auto 0; }
+        .timeline-item { background: white; padding: 25px; border-radius: 15px; border-left: 5px solid var(--primary-green); }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 992px) {
+            .menu-btn { display: block; }
+            .nav-links { 
+                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; 
+                background: var(--primary-green); flex-direction: column; padding: 100px 40px; 
+                transition: 0.5s; box-shadow: -10px 0 30px rgba(0,0,0,0.3); 
+            }
+            .nav-links.active { right: 0; }
+            .therapy-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+                <div class="menu-btn" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="education.html">Education</a>
+                    <a href="rehabilitation.html" style="color: var(--accent-yellow);">Rehabilitation</a>
+                    <a href="caregiver-guides.html">Guides</a>
+                    <a href="donate.html" class="btn-yellow">Donate</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="rehab-header">
+        <div class="container">
+            <h1>Rehabilitation Services</h1>
+            <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">Recovery is a marathon, not a sprint. We provide the tools and professional guidance to help you regain your independence.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2>Types of Therapy</h2>
+                <p>Holistic care tailored to individual needs.</p>
+            </div>
+
+            <div class="therapy-grid">
+                <div class="therapy-card">
+                    <div class="icon-circle">💪</div>
+                    <h3>Physical Therapy</h3>
+                    <p>Focusing on mobility, strength, and balance to help survivors walk and move again.</p>
+                </div>
+                <div class="therapy-card">
+                    <div class="icon-circle">🧠</div>
+                    <h3>Occupational Therapy</h3>
+                    <p>Re-learning daily activities like dressing, eating, and writing to foster independence.</p>
+                </div>
+                <div class="therapy-card">
+                    <div class="icon-circle">🗣️</div>
+                    <h3>Speech Therapy</h3>
+                    <p>Assisting with communication challenges (Aphasia) and swallowing difficulties.</p>
+                </div>
+            </div>
+
+            <div class="timeline-section">
+                <div class="container">
+                    <h2 style="text-align: center;">The Recovery Roadmap</h2>
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <h4>Phase 1: Acute Recovery (Days 1-30)</h4>
+                            <p>Initial medical stabilization and beginning of passive range-of-motion exercises.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Phase 2: Active Rehab (Months 1-6)</h4>
+                            <p>Intensive therapy sessions focusing on neuroplasticity and re-training the brain.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Phase 3: Long-term Maintenance</h4>
+                            <p>Community support groups and home-based exercise to maintain gains.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; text-align: center;">
+                <h2>Ready to Start?</h2>
+                <p style="margin-bottom: 30px;">Connect with our network of specialized therapists in Rwanda.</p>
+                <a href="contact.html" class="btn-yellow" style="padding: 15px 40px; font-size: 1.1rem;">Find a Therapist</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--primary-green); color: white; padding: 40px 0; text-align: center; border-top: 4px solid var(--accent-yellow);">
+        <p>&copy; 2026 Stroke Action Rwanda. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

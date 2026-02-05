@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Application | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; background-color: var(--soft-bg); color: var(--text-dark); line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* --- HEADER --- */
+        header { background: var(--primary-green); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
+        .logo { font-family: 'Montserrat'; font-weight: 800; color: var(--white); text-decoration: none; text-transform: uppercase; font-size: 1.1rem; }
+
+        .app-header { padding: 120px 0 40px; text-align: center; }
+        .app-header h1 { font-family: 'Montserrat'; font-size: 2.2rem; color: var(--primary-green); margin-bottom: 10px; }
+
+        /* --- FORM STYLING --- */
+        .form-card { background: var(--white); padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .section-title { font-family: 'Montserrat'; font-size: 1.2rem; color: var(--primary-green); margin-bottom: 20px; border-bottom: 2px solid var(--accent-yellow); display: inline-block; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .full-width { grid-column: span 2; }
+
+        label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.9rem; color: var(--primary-green); }
+        input, select, textarea { width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 8px; font-size: 1rem; transition: 0.3s; background: #fafafa; }
+        input:focus, textarea:focus { border-color: var(--accent-yellow); outline: none; background: white; }
+
+        /* Custom Checkbox Group */
+        .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .checkbox-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+        .checkbox-item input { width: auto; }
+
+        .submit-btn { 
+            width: 100%; background: var(--primary-green); color: white; border: none; padding: 18px; 
+            border-radius: 10px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: 0.3s; 
+        }
+        .submit-btn:hover { background: #2a5a2a; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(27, 57, 27, 0.2); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .checkbox-group { grid-template-columns: 1fr; }
+            .form-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container" style="padding: 0 20px;">
+            <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="app-header">
+            <h1>Volunteer Application</h1>
+            <p>Join our team and help us change lives across Rwanda.</p>
+        </div>
+
+        <div class="form-card">
+            <form action="https://formspree.io/f/xlgbqkwa" method="POST">
+                
+                <p class="section-title">1. Personal Information</p>
+                <div class="form-grid">
+                    <div>
+                        <label>First Name</label>
+                        <input type="text" name="first_name" required>
+                    </div>
+                    <div>
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" required>
+                    </div>
+                    <div class="full-width">
+                        <label>Email Address</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="full-width">
+                        <label>Phone Number (WhatsApp preferred)</label>
+                        <input type="tel" name="phone" placeholder="+250..." required>
+                    </div>
+                </div>
+
+                <p class="section-title">2. Skills & Interests</p>
+                <label>What areas are you interested in? (Select all that apply)</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item"><input type="checkbox" name="interest" value="Awareness"> Community Awareness</div>
+                    <div class="checkbox-item"><input type="checkbox" name="interest" value="Patient Support"> Patient Support</div>
+                    <div class="checkbox-item"><input type="checkbox" name="interest" value="Medical"> Medical/Nursing</div>
+                    <div class="checkbox-item"><input type="checkbox" name="interest" value="Events"> Event Planning</div>
+                    <div class="checkbox-item"><input type="checkbox" name="interest" value="Admin"> Admin/Office Work</div>
+                    <div class="checkbox-item"><input type="checkbox" name="interest" value="SocialMedia"> Social Media/Design</div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 30px;">
+                    <label>Why do you want to volunteer with Stroke Action Rwanda?</label>
+                    <textarea name="motivation" rows="4" required></textarea>
+                </div>
+
+                <p class="section-title">3. Availability</p>
+                <div class="form-grid">
+                    <div class="full-width">
+                        <label>How many hours per week can you dedicate?</label>
+                        <select name="hours">
+                            <option value="1-5">1-5 hours</option>
+                            <option value="5-10">5-10 hours</option>
+                            <option value="10+">10+ hours</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px 0; color: #888; font-size: 0.9rem;">
+        <p>&copy; 2026 Stroke Action Rwanda. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

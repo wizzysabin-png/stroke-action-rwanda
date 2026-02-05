@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warning Signs | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- SHARED CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; background-color: var(--white); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 60px 0; }
+        
+        /* --- NAVIGATION --- */
+        header { background: var(--primary-green); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 2000; height: 70px; }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+        .logo { font-size: 1rem; font-weight: 800; color: var(--white); text-transform: uppercase; text-decoration: none; z-index: 2001; }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 2001; }
+
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-yellow); }
+        .btn-yellow { background: var(--accent-yellow); color: var(--primary-green); padding: 8px 18px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+
+        /* --- WARNING SIGNS SPECIFIC --- */
+        .hero-banner { 
+            background: linear-gradient(rgba(186, 30, 30, 0.9), rgba(186, 30, 30, 0.9)), url('https://placehold.co/1200x400/8B0000/white?text=Time+Is+Brain');
+            background-size: cover; background-position: center; padding: 140px 0 60px; color: white; text-align: center;
+        }
+        .hero-banner h1 { color: var(--white); font-size: clamp(2rem, 8vw, 3.5rem); text-transform: uppercase; margin-bottom: 10px; }
+        .hero-banner p { font-size: clamp(1rem, 3vw, 1.3rem); }
+        
+        /* BE FAST GRID */
+        .fast-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 40px 0; }
+        .fast-card { background: var(--soft-bg); padding: 25px 15px; text-align: center; border-radius: 15px; border-bottom: 5px solid var(--primary-green); transition: 0.3s; }
+        .fast-card:hover { transform: translateY(-5px); background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .letter { font-size: 3.5rem; font-weight: 900; color: var(--accent-yellow); line-height: 1; margin-bottom: 10px; display: block; -webkit-text-stroke: 1px var(--primary-green); }
+
+        /* Visual Info Sections */
+        .info-row { display: flex; align-items: center; gap: 40px; margin-top: 60px; flex-wrap: wrap; }
+        .info-text { flex: 1; min-width: 300px; }
+        .info-img { flex: 1; min-width: 300px; border-radius: 20px; box-shadow: 15px 15px 0 var(--accent-yellow); }
+        .info-img img { width: 100%; border-radius: 15px; display: block; }
+
+        /* Video Section */
+        .video-vault { background: var(--primary-green); color: white; padding: 60px 0; border-radius: 30px 30px 0 0; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .video-item h3 { color: var(--accent-yellow); margin-top: 15px; font-size: 1.1rem; }
+        .video-player { width: 100%; aspect-ratio: 16/9; border-radius: 15px; border: 2px solid var(--accent-yellow); }
+
+        /* --- RESPONSIVE BREAKPOINTS --- */
+        @media (max-width: 992px) {
+            .menu-toggle { display: block; }
+            .nav-links { 
+                position: fixed; top: 0; right: -100%; width: 250px; height: 100vh; 
+                background: var(--primary-green); flex-direction: column; padding: 100px 20px; 
+                transition: 0.4s; box-shadow: -10px 0 30px rgba(0,0,0,0.3); 
+            }
+            .nav-links.active { right: 0; }
+            .info-img { box-shadow: none; margin-top: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .fast-grid { grid-template-columns: 1fr 1fr; }
+            .section-padding { padding: 40px 0; }
+            .video-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                    <a href="prevention.html">Prevention</a>
+                    <a href="education.html">Education</a>
+                    <a href="warning-signs.html" style="color: var(--accent-yellow);">Warning Signs</a>
+                    <a href="donate.html" class="btn-yellow">Donate</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="container">
+            <h1>Act F.A.S.T.</h1>
+            <p>Recognizing the signs of a stroke immediately can mean the difference between recovery and permanent disability.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 10px;">The B.E. F.A.S.T. Method</h2>
+            <p style="text-align: center; margin-bottom: 40px;">Use this simple checklist to identify a stroke in progress.</p>
+            
+            <div class="fast-grid">
+                <div class="fast-card">
+                    <span class="letter">B</span>
+                    <h4>Balance</h4>
+                    <p style="font-size: 0.8rem;">Sudden loss of balance or coordination.</p>
+                </div>
+                <div class="fast-card">
+                    <span class="letter">E</span>
+                    <h4>Eyes</h4>
+                    <p style="font-size: 0.8rem;">Sudden blurred or double vision.</p>
+                </div>
+                <div class="fast-card">
+                    <span class="letter">F</span>
+                    <h4>Face</h4>
+                    <p style="font-size: 0.8rem;">Does one side of the face droop?</p>
+                </div>
+                <div class="fast-card">
+                    <span class="letter">A</span>
+                    <h4>Arms</h4>
+                    <p style="font-size: 0.8rem;">Is one arm weak or numb?</p>
+                </div>
+                <div class="fast-card">
+                    <span class="letter">S</span>
+                    <h4>Speech</h4>
+                    <p style="font-size: 0.8rem;">Is speech slurred or strange?</p>
+                </div>
+                <div class="fast-card" style="border-color: #ba1e1e;">
+                    <span class="letter" style="color: #ba1e1e;">T</span>
+                    <h4>Time</h4>
+                    <p style="font-size: 0.8rem;">Call emergency services immediately!</p>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-text">
+                    <h2>Sudden Onset Symptoms</h2>
+                    <p>Unlike other medical conditions, stroke symptoms usually happen <strong>suddenly</strong>. Within seconds, one side of your body may stop responding.</p>
+                    <ul style="margin-top: 20px; list-style: none;">
+                        <li style="margin-bottom: 10px;"><strong>✓ Severe Headache:</strong> A "thunderclap" headache with no known cause.</li>
+                        <li style="margin-bottom: 10px;"><strong>✓ Numbness:</strong> Usually focused on one side of the body.</li>
+                        <li style="margin-bottom: 10px;"><strong>✓ Confusion:</strong> Difficulty understanding others.</li>
+                    </ul>
+                </div>
+                <div class="info-img">
+                    <img src="https://placehold.co/600x400/1B391B/white?text=Symptom+Visualization" alt="Stroke Symptoms Map">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="video-vault">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="color: var(--accent-yellow);">Video Training</h2>
+                <p>Watch real-life demonstrations of stroke symptoms.</p>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe class="video-player" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>B.E. F.A.S.T. Training Video</h3>
+                    <p style="opacity: 0.8; font-size: 0.9rem;">A detailed walkthrough of each sign.</p>
+                </div>
+                <div class="video-item">
+                    <iframe class="video-player" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                    <h3>Real Survivor Testimony</h3>
+                    <p style="opacity: 0.8; font-size: 0.9rem;">What it feels like when a stroke starts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #111; color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2026 Stroke Action Rwanda. All rights reserved.</p>
+            <p style="color: var(--accent-yellow); font-weight: 700; margin-top: 10px;">In an Emergency, Call: 912</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

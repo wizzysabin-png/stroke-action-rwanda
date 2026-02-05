@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partnership Details | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; background-color: var(--white); }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* --- NAV --- */
+        header { background: var(--primary-green); padding: 15px 0; position: sticky; top: 0; z-index: 2000; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1rem; font-weight: 800; color: var(--white); text-decoration: none; text-transform: uppercase; }
+
+        /* --- CONTENT SECTION --- */
+        .details-hero { padding: 60px 0; background: var(--soft-bg); border-bottom: 5px solid var(--accent-yellow); margin-bottom: 40px; }
+        .breadcrumb { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; color: var(--primary-green); }
+
+        .grid-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; margin-top: 40px; }
+
+        .feature-list { list-style: none; margin: 30px 0; }
+        .feature-list li { padding: 15px 0; border-bottom: 1px solid #eee; display: flex; align-items: flex-start; gap: 15px; }
+        .feature-list li b { color: var(--primary-green); min-width: 120px; display: inline-block; }
+
+        /* --- DONATION/FUNDING BOX (Flutterwave Ready) --- */
+        .funding-card { 
+            background: var(--white); border: 2px solid var(--primary-green); 
+            padding: 35px; border-radius: 20px; position: sticky; top: 100px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+        }
+        .funding-card h3 { margin-bottom: 15px; }
+        .flutterwave-btn { 
+            background: #f5a623; /* Flutterwave Brand Color */
+            color: white; border: none; padding: 18px; width: 100%; 
+            border-radius: 12px; font-weight: 800; cursor: pointer; 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 20px; transition: 0.3s;
+        }
+        .flutterwave-btn:hover { background: #e0961d; transform: scale(1.02); }
+
+        /* --- MOBILE --- */
+        @media (max-width: 850px) {
+            .grid-layout { grid-template-columns: 1fr; }
+            .funding-card { position: static; margin-top: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+                <a href="partner.html" style="color: white; text-decoration: none; font-size: 0.8rem; font-weight: 600;">← Back to Partners</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="details-hero">
+        <div class="container">
+            <span class="breadcrumb">Partnership Program</span>
+            <h1>Rehabilitation Center Sponsorship</h1>
+            <p>Directly funding the recovery journey of stroke survivors in Rwandan communities.</p>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="grid-layout">
+            <div class="content">
+                <h2>About the Program</h2>
+                <p>As a Program Sponsor, your organization adopts a specific community outreach or rehabilitation clinic. This funding ensures that survivors in rural or under-served areas of Rwanda have access to specialized physical and occupational therapy.</p>
+
+                <ul class="feature-list">
+                    <li><b>Impact:</b> Supports up to 50 survivors monthly with professional physiotherapy.</li>
+                    <li><b>Visibility:</b> Your organization’s name and logo prominently displayed at the clinic site.</li>
+                    <li><b>Reporting:</b> Receive semi-annual data on patient recovery milestones and equipment usage.</li>
+                    <li><b>Engagement:</b> Opportunities for your staff to visit and volunteer at the sponsored facility.</li>
+                </ul>
+
+                <h3>Why Sponsor?</h3>
+                <p>Stroke recovery requires long-term commitment. By sponsoring a center, you move beyond awareness into direct medical action, providing the physical tools necessary for survivors to regain their independence.</p>
+            </div>
+
+            <aside>
+                <div class="funding-card">
+                    <h3>Secure Partnership</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Ready to initiate your sponsorship? You can fund the program startup costs directly via our secure payment gateway.</p>
+                    
+                    <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 20px 0;">
+                        <p style="font-size: 0.8rem; margin-bottom: 5px;">Primary Program Cost:</p>
+                        <h2 style="color: var(--primary-green);">$5,000 / Annual</h2>
+                    </div>
+
+                    <button class="flutterwave-btn" onclick="makePayment()">
+    <span>💳</span> Pay with Flutterwave (Test Mode)
+</button>
+                    
+                    <p style="text-align: center; font-size: 0.75rem; margin-top: 15px; color: #888;">
+                        Accepted: Mobile Money, Visa, Mastercard
+                    </p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    
+    <footer style="margin-top: 80px; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
+        <p>&copy; 2026 Stroke Action Rwanda. All rights reserved.</p>
+    </footer>
+
+</body>
+      
+
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+
+<script>
+  function makePayment() {
+    FlutterwaveCheckout({
+      // 1. CHANGE 'PBFPubKey' TO 'public_key'
+      public_key: "76d7c13c-6409-4f96-9a67-bae6c9c9242e", 
+      
+      tx_ref: "SAR-TX-" + Date.now(),
+      amount: 5000,
+      currency: "USD",
+      payment_options: "card, mobilemoneyrwanda, ussd",
+      
+      // 2. Ensuring customer details are present to avoid the previous error
+      customer: {
+        email: "sabinlolo3@gmail.com", 
+        phone_number: "0780000000",
+        name: "SAR Partner",
+      },
+
+      callback: function (data) {
+        console.log("Payment successful", data);
+        window.location.href = "thank-you.html";
+      },
+      customizations: {
+        title: "Stroke Action Rwanda",
+        description: "Corporate Partnership Payment",
+        logo: "https://your-website.com/logo.png",
+      },
+    });
+  }
+</script>
+
+</html>

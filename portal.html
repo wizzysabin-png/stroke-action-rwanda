@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Portal | Stroke Action Rwanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F0F4F0;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; background-color: var(--soft-bg); height: 100vh; display: flex; flex-direction: column; }
+        
+        /* --- NAVIGATION --- */
+        header { background: var(--primary-green); padding: 15px 0; width: 100%; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Montserrat'; font-weight: 800; color: var(--white); text-decoration: none; text-transform: uppercase; font-size: 1rem; }
+
+        /* --- PORTAL LAYOUT --- */
+        .portal-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        
+        .login-card { 
+            background: var(--white); width: 100%; max-width: 450px; 
+            border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); 
+            overflow: hidden; animation: fadeIn 0.6s ease-out;
+        }
+
+        .card-header { background: var(--primary-green); padding: 40px; text-align: center; color: white; }
+        .card-header h2 { font-family: 'Montserrat'; color: var(--accent-yellow); margin-bottom: 10px; }
+        .card-header p { font-size: 0.9rem; opacity: 0.9; }
+
+        .card-body { padding: 40px; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.85rem; color: var(--primary-green); }
+        .form-group input { 
+            width: 100%; padding: 14px; border: 2px solid #eee; border-radius: 12px; 
+            font-size: 1rem; transition: 0.3s; background: #fafafa;
+        }
+        .form-group input:focus { border-color: var(--accent-yellow); outline: none; background: white; }
+
+        .forgot-link { display: block; text-align: right; font-size: 0.8rem; color: var(--primary-green); text-decoration: none; margin-top: -10px; margin-bottom: 25px; font-weight: 600; }
+
+        .login-btn { 
+            width: 100%; background: var(--primary-green); color: white; border: none; 
+            padding: 16px; border-radius: 12px; font-weight: 700; font-size: 1.1rem; 
+            cursor: pointer; transition: 0.3s; margin-bottom: 20px;
+        }
+        .login-btn:hover { background: #2a5a2a; transform: translateY(-2px); }
+
+        .portal-footer { text-align: center; font-size: 0.85rem; color: #666; }
+        .portal-footer a { color: var(--primary-green); font-weight: 700; text-decoration: none; }
+
+        /* --- ANIMATION --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE ADAPTATION --- */
+        @media (max-width: 480px) {
+            .card-header { padding: 30px 20px; }
+            .card-body { padding: 30px 20px; }
+            .login-card { border-radius: 0; height: 100%; max-width: none; box-shadow: none; }
+            .portal-wrapper { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">Stroke Action Rwanda</a>
+            <a href="index.html" style="color: white; text-decoration: none; font-size: 0.8rem; font-weight: 600;">← Back to Home</a>
+        </div>
+    </header>
+
+    <main class="portal-wrapper">
+        <div class="login-card">
+            <div class="card-header">
+                <h2>Learning Portal</h2>
+                <p>Access your courses, medical guides, and rehabilitation videos.</p>
+            </div>
+            
+            <div class="card-body">
+                <form action="#">
+                    <div class="form-group">
+                        <label>Member ID or Email</label>
+                        <input type="text" placeholder="Enter your ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                    
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                    
+                    <button type="submit" class="login-btn">Secure Login</button>
+                    
+                    <div class="portal-footer">
+                        <p>Don't have an account? <a href="get-involved.html">Request Access</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    
+
+    <footer style="padding: 20px; text-align: center; font-size: 0.8rem; color: #888;">
+        <p>&copy; 2026 Stroke Action Rwanda. All rights reserved. <br> Protected by SAR Medical Security.</p>
+    </footer>
+
+</body>
+</html>
