@@ -274,13 +274,14 @@ function finishPayment() {
     const donorLastName = document.getElementById('lastName').value;
     const donorPhone = document.getElementById('donorPhone').value;
 
-    // Change button text to show it's working
     const payBtn = document.querySelector('#step4 .btn-yellow');
     payBtn.innerText = "Processing...";
     payBtn.disabled = true;
 
     FlutterwaveCheckout({
-        public_key: "FLWPUBK_TEST-XXXXX-X", // IMPORTANT: Replace this with your Live Public Key from Flutterwave Dashboard
+        // 1. YOUR PUBLIC KEY (From Screenshot 90 - use the one that starts with FLWPUBK_TEST)
+        public_key: "3d17a9a8-5c22-4bac-8135-79fa83597a57", 
+        
         tx_ref: "SAR-" + Date.now(),
         amount: donorAmount,
         currency: "RWF",
@@ -292,29 +293,32 @@ function finishPayment() {
         },
         customizations: {
             title: "Stroke Action Rwanda",
-            description: "Donation for Stroke Prevention & Support",
-            logo: "https://yourwebsite.com/photo/logo.jpg", 
+            description: "Support for Stroke Prevention",
+            // 2. LOGO: Ensure this points to your live GitHub image path
+            logo: "https://wizzysabin-png.github.io/stroke-action-rwanda/photo/logo.jpeg", 
         },
         callback: function (data) {
+            // 3. SUCCESS REDIRECT
             if (data.status === "successful") {
-                window.location.href = "thank-you.html";
+                // Make sure you create this file or change it to "index.html"
+                window.location.href = "thank-you.html?status=success"; 
             } else {
                 alert("Payment was not successful. Please try again.");
-                payBtn.innerText = "Donate";
+                payBtn.innerText = "Confirm & Pay Now";
                 payBtn.disabled = false;
             }
         },
         onclose: function() {
-            payBtn.innerText = "Donate";
+            payBtn.innerText = "Confirm & Pay Now";
             payBtn.disabled = false;
         }
     });
 }
-
  function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
     </script>
 </body>
+
 </html>
