@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script src="https://js.paystack.co/v2/inline.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate | Stroke Action Rwanda</title>
@@ -275,42 +275,42 @@ function finishPayment() {
     const donorPhone = document.getElementById('donorPhone').value;
 
     const payBtn = document.querySelector('#step4 .btn-yellow');
-    payBtn.innerText = "Processing...";
+    payBtn.innerText = "Opening Secure Portal...";
     payBtn.disabled = true;
 
-    FlutterwaveCheckout({
-        // 1. YOUR PUBLIC KEY (From Screenshot 90 - use the one that starts with FLWPUBK_TEST)
-        public_key: "3d17a9a8-5c22-4bac-8135-79fa83597a57", 
+    const paystack = new PaystackPop();
+    paystack.newTransaction({
+        // REPLACE THIS with your "Live Public Key" from Paystack Settings
+        key: 'pk_test_1e6e937a81405759bf6e7292c68375eae46ebc7a', 
         
-        tx_ref: "SAR-" + Date.now(),
-        amount: donorAmount,
+        email: donorEmail,
+        amount: donorAmount * 100, // Paystack counts in subunits (100 = 1 RWF)
         currency: "RWF",
-        payment_options: "card, mobilemoneyrwanda, googlepay",
-        customer: {
-            email: donorEmail,
-            phone_number: donorPhone,
-            name: donorFirstName + " " + donorLastName,
+        ref: "SAR-" + Math.floor((Math.random() * 1000000000) + 1), // Unique ID
+        
+        onSuccess: (transaction) => {
+            // Redirect to your thank you page
+            window.location.href = "thank-you.html?ref=" + transaction.reference;
         },
-        customizations: {
-            title: "Stroke Action Rwanda",
-            description: "Support for Stroke Prevention",
-            // 2. LOGO: Ensure this points to your live GitHub image path
-            logo: "https://wizzysabin-png.github.io/stroke-action-rwanda/photo/logo.jpeg", 
-        },
-        callback: function (data) {
-            // 3. SUCCESS REDIRECT
-            if (data.status === "successful") {
-                // Make sure you create this file or change it to "index.html"
-                window.location.href = "thank-you.html?status=success"; 
-            } else {
-                alert("Payment was not successful. Please try again.");
-                payBtn.innerText = "Confirm & Pay Now";
-                payBtn.disabled = false;
-            }
-        },
-        onclose: function() {
+        onCancel: () => {
+            alert("Payment cancelled. Your support is still needed whenever you're ready!");
             payBtn.innerText = "Confirm & Pay Now";
             payBtn.disabled = false;
+        },
+        // Metadata allows you to see the donor's name in your Paystack Dashboard
+        metadata: {
+            custom_fields: [
+                {
+                    display_name: "Donor Name",
+                    variable_name: "donor_name",
+                    value: donorFirstName + " " + donorLastName
+                },
+                {
+                    display_name: "Phone Number",
+                    variable_name: "phone_number",
+                    value: donorPhone
+                }
+            ]
         }
     });
 }
@@ -322,3 +322,4 @@ function finishPayment() {
 </body>
 
 </html>
+
