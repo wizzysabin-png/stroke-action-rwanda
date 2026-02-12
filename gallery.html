@@ -32,7 +32,7 @@
         /* --- SHARED NAVIGATION --- */
         header { background: var(--primary-green); padding: 20px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
         nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.2rem; font-weight: 800; color: var(--white); text-transform: uppercase; text-decoration: none; }
+        .logo { color: white; text-decoration: none; font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent-yellow); }
@@ -96,6 +96,7 @@
                     <a href="prevention.html">Prevention</a>
                     <a href="support.html">Support</a>
                     <a href="stories.html">Stories</a>
+                    <a href="event.html">Events</a>
                     <a href="gallery.html" style="color: var(--accent-yellow);">Gallery</a>
                     <a href="donate.html" class="btn-yellow">Donate</a>
                 </div>
@@ -168,82 +169,89 @@
 
 <section class="section-padding" style="background: var(--soft-bg); border-radius: 40px; margin-bottom: 60px;">
     <div class="container">
+        
         <div style="text-align: center; margin-bottom: 50px;">
-            <h2>Our Leadership Team</h2>
-            <p>The dedicated individuals driving our mission forward.</p>
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Board of Directors</h2>
+            <div style="width: 80px; height: 4px; background: var(--accent-yellow); margin: 0 auto 20px;"></div>
         </div>
 
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 50px;">
-            <div class="gallery-item" style="width: 350px; height: 450px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 80px;">
+            <div class="gallery-item" style="width: 350px; height: 450px; border-bottom: 5px solid var(--accent-yellow);">
                 <img src="admin/1.jpeg" alt="President">
-                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 37, 37, 0.2);">
-                    <h4>Dr. Joseph RUKELIBUGA</h4>
-                    <p>Founder & President <br>Stroke Action Rwanda</p>
+                <div class="gallery-overlay" style="opacity: 1; background: linear-gradient(transparent, rgba(27, 57, 27, 0.95));">
+                    <h4 style="font-size: 1.4rem;">Dr. Joseph Rukelibuga</h4>
+                    <p style="color: var(--accent-yellow); font-weight: 700; text-transform: uppercase; font-size: 0.85rem;">Founder and President</p>
                 </div>
             </div>
-            <div class="gallery-item" style="width: 350px; height: 450px;">
+
+            <div class="gallery-item" style="width: 350px; height: 450px; border-bottom: 5px solid var(--accent-yellow);">
                 <img src="admin/2.jpeg" alt="Vice President">
-                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 37, 37, 0.3);">
-                    <h4>Ms. Alexia UWAJENEZA</h4>
-                    <p>Vice President <br>Stroke Action Rwanda</p>
+                <div class="gallery-overlay" style="opacity: 1; background: linear-gradient(transparent, rgba(27, 57, 27, 0.95));">
+                    <h4 style="font-size: 1.4rem;">Ms. Alexia Uwajeneza</h4>
+                    <p style="color: var(--accent-yellow); font-weight: 700; text-transform: uppercase; font-size: 0.85rem;">Vice President</p>
                 </div>
             </div>
+
+            <div class="gallery-item" style="width: 300px; height: 400px;">
+                <img src="admin/5.jpeg" alt="Executive Secretary">
+                <div class="gallery-overlay" style="opacity: 1; background: linear-gradient(transparent, rgba(27, 57, 27, 0.9));">
+                    <h4>PT. Jean Paul Hakizimana</h4>
+                    <p style="color: var(--accent-yellow);">Executive Secretary</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" style="width: 300px; height: 400px;">
+                <img src="admin/7.jpeg" alt="Audit Committee">
+                <div class="gallery-overlay" style="opacity: 1; background: linear-gradient(transparent, rgba(27, 57, 27, 0.9));">
+                    <h4>Mr. Silas Mutsindashyaka</h4>
+                    <p style="color: var(--accent-yellow);">Chairperson, Audit Committee</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" style="width: 300px; height: 400px;">
+                <img src="admin/4.jpeg" alt="Conflict Resolution">
+                <div class="gallery-overlay" style="opacity: 1; background: linear-gradient(transparent, rgba(27, 57, 27, 0.9));">
+                    <h4>Mr. Robert Twongyeirwe</h4>
+                    <p style="color: var(--accent-yellow);">Chairperson, Conflict Resolution Committee</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Volunteer Leadership and Management Team</h2>
+            <div style="width: 80px; height: 4px; background: var(--primary-green); margin: 0 auto 20px;"></div>
         </div>
 
         <div class="gallery-grid">
-            <div class="gallery-item" style="height: 400px;">
+            <div class="gallery-item" style="height: 380px;">
                 <img src="admin/3.jpeg" alt="Executive Director">
-                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
+                <div class="gallery-overlay" style="opacity: 1; background: linear-gradient(transparent, rgba(0,0,0,0.8));">
                     <h4>Mr. Charles Karangwa</h4>
-                    <p>Executive Director <br>Stroke Action Rwanda</p>
+                    <p>Executive Director</p>
                 </div>
             </div>
 
-<div class="gallery-item" style="height: 400px;">
-                <img src="admin/9.jpeg" alt="Executive Secretary">
-                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
-                    <h4>Mr. Sylvere Mudendeli </h4>
-                    <p> Director of programs  <br>Stroke Action Rwanda</p>
+            <div class="gallery-item" style="height: 380px;">
+                <img src="admin/9.jpeg" alt="Director of Programs">
+                <div class="gallery-overlay" style="opacity: 1; background: linear-gradient(transparent, rgba(0,0,0,0.8));">
+                    <h4>Mr. Sylvere Mudendeli</h4>
+                    <p>Director of Programs</p>
                 </div>
             </div>
 
-            <div class="gallery-item" style="height: 400px;">
-                <img src="admin/5.jpeg" alt="Executive Secretary">
-                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
-                    <h4>Mr. Jean Paul Hakizimana</h4>
-                    <p>PT Executive Secretary <br>Stroke Action Rwanda</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" style="height: 400px;">
-                <img src="admin/6.jpeg" alt="Communication Officer">
-                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
+            <div class="gallery-item" style="height: 380px;">
+                <img src="admin/6.jpeg" alt="Communications Officer">
+                <div class="gallery-overlay" style="opacity: 1; background: linear-gradient(transparent, rgba(0,0,0,0.8));">
                     <h4>Mr. Ghislain Mutabaruka</h4>
-                    <p>Communication Officer <br>Stroke Action Rwanda</p>
+                    <p>Communications Officer</p>
                 </div>
             </div>
 
-            <div class="gallery-item" style="height: 400px;">
-                <img src="admin/4.jpeg" alt="Conflict Resolution">
-                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
-                    <h4>Mr. Robert Twongyeirwe</h4>
-                    <p>Chair, Conflict Resolution <br>Stroke Action Rwanda</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" style="height: 400px;">
-                <img src="admin/7.jpeg" alt="Audit Committee">
-                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
-                    <h4>Mr. Silas Mutsindashyaka</h4>
-                    <p>Chair, Audit Committee <br>Stroke Action Rwanda</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" style="height: 400px;">
+            <div class="gallery-item" style="height: 380px;">
                 <img src="admin/8.jpeg" alt="Accountant">
-                <div class="gallery-overlay" style="opacity: 1; background: rgba(27, 57, 27, 0.3);">
-                    <h4>Ms. Épiphanie Akimanizanye</h4>
-                    <p>Accountant <br>Stroke Action Rwanda</p>
+                <div class="gallery-overlay" style="opacity: 1; background: linear-gradient(transparent, rgba(0,0,0,0.8));">
+                    <h4>Ms. Epiphanie Akimanizanye</h4>
+                    <p>Accountant</p>
                 </div>
             </div>
         </div>
@@ -307,5 +315,6 @@
 </body>
 
 </html>
+
 
 
