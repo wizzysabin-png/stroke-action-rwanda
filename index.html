@@ -64,7 +64,11 @@
         .stat-item p { font-weight: 600; text-transform: uppercase; font-size: 0.85rem; }
 
         /* --- ACTION CARDS --- */
-        .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .section-padding { padding: 100px 0; }
+        .center-heading { text-align: center; margin-bottom: 60px; }
+        .center-heading h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        
+        .focus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
        .focus-card { background: var(--white); padding: 40px; border-radius: 20px; border: 1px solid #eee; transition: var(--transition); display: flex; flex-direction: column; }
         .focus-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--accent-yellow); }
         .focus-card h3 { margin-bottom: 15px; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
@@ -198,17 +202,22 @@ Every minute counts. Rapid action protects brain function, independence, and qua
 
      <section class="section-padding">
         <div class="container">
-            <div class="center-text">
+            <div class="center-heading">
                 <h2>Our Core Focus Areas</h2>
-                <p>We deliver a comprehensive, continuum-of-care approach to stroke in Rwanda — integrating public education, risk reduction, emergency response, acute management awareness, rehabilitation, and caregiver support.</p>
+                <p>We deliver a comprehensive, continuum-of-care approach to stroke in 
+                    Rwanda — integrating public education, risk reduction, emergency response,
+                    acute management awareness, rehabilitation, and caregiver support.</p>
             
             </div>
                 <div class="focus-grid">
                 <div class="focus-card">
                     <h3>Recognize Stroke. Respond Immediately.</h3>
                     <p> Stroke symptoms appear suddenly and require urgent medical attention. Delayed treatment leads to irreversible brain injury.
-Early recognition and immediate activation of emergency medical services significantly improve survival and functional outcomes.
+Early recognition and immediate activation of emergency
+                        medical services significantly improve
+                        survival and functional outcomes.
 </p>
+                    <a href="#" class="learn-more">Learn more →</a>
                 </div>
                 <div class="focus-card">
                     <h3>Prevention & Risk</h3>
@@ -623,6 +632,7 @@ Our vision is a Rwanda where stroke is prevented whenever possible and every per
 </body>
 
 </html>
+
 
 
 
