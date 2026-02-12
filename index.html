@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stroke Action Rwanda | Act Fast. Save a Life.</title>
+    <title>Stroke Action Rwanda | Act Fast. Save Brain Cells.</title>
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
 
@@ -65,13 +65,14 @@
 
         /* --- ACTION CARDS --- */
         .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .action-card { background: var(--white); padding: 50px 40px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-top: 5px solid var(--accent-yellow); transition: var(--transition); }
-        .action-card:hover { transform: translateY(-10px); }
-
-        .action-card h3 { margin-bottom: 20px; font-size: 1.4rem; }
-        .action-card p { margin-bottom: 25px; color: var(--text-muted); }
-        .action-card a { color: var(--primary-green); font-weight: 700; text-decoration: none; transition: 0.3s; }
-        .action-card a:hover { color: #e0bc10; }
+       .focus-card { background: var(--white); padding: 40px; border-radius: 20px; border: 1px solid #eee; transition: var(--transition); display: flex; flex-direction: column; }
+        .focus-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--accent-yellow); }
+        .focus-card h3 { margin-bottom: 15px; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .focus-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
+        .focus-card ul { list-style: none; margin-bottom: 20px; font-size: 0.85rem; }
+        .focus-card li { margin-bottom: 8px; position: relative; padding-left: 20px; }
+        .focus-card li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-yellow); font-weight: bold; }
+        .learn-more { font-weight: 700; color: var(--primary-green); text-decoration: none; border-bottom: 2px solid var(--accent-yellow); align-self: flex-start; }
 
         /* --- FAST SECTION --- */
         .edu-section { background: var(--soft-bg); }
@@ -150,7 +151,7 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="photo/logo.jpeg" alt="Logo" style="height: 60px; vertical-align: middle; margin-right: 10px;">
+                    <img src="photo/logo.jpeg" alt="Logo" style="height: 60px; vertical-align: middle; margin-right: 10px; border-radius: 50%;">
                     Stroke Action Rwanda
                 </div>
                 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -160,6 +161,7 @@
                     <a href="support.html">Support</a>
                     <a href="stories.html">Stories</a>
                     <a href="gallery.html">Gallery</a>
+                    <a href="event.html">Event</a>
                     <a href="donate.html" class="btn btn-yellow" style="padding: 10px 20px; width: auto;">Donate</a>
                 </div>
             </nav>
@@ -169,11 +171,14 @@
     <section class="hero">
         <div class="container hero-flex">
             <div class="hero-text">
-                <h1>Act Fast. Save a Life.<br>Prevent Stroke in Rwanda.</h1>
-                <p>Stroke Action Rwanda works to prevent stroke, ensure early treatment, and support long-term recovery for individuals across Rwanda.</p>
-                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                    <a href="#prevention" class="btn btn-yellow">Learn Warning Signs</a>
-                    <a href="programs.html" class="btn btn-outline">Our Programs</a>
+               <h1>Act Fast. <br><span style="color: #2e7d32;">Save Brain Cells.</span> Save Lives.<br>Improve Stroke care in Rwanda.</h1>
+                <p>Stroke is a leading cause of death and long-term disability. It is a medical emergency that requires immediate recognition and rapid access to care.
+Stroke Action Rwanda works to address iniquities in stroke treatment by reducing isolation, improving public awareness, calling on the government to invest in stroke care and treatment, community engagement, and outreach.
+Every minute counts. Rapid action protects brain function, independence, and quality of life.
+</p>
+                <div style="display: flex; gap: 15px; justify-content: inherit;">
+                    <a href="#prevention" class="btn btn-yellow">Recognize the Signs</a>
+                    <a href="programs.html" class="btn" style="border: 2px solid var(--primary-green); color: var(--primary-green);">Our Higher Purpose</a>
                 </div>
             </div>
             <div class="hero-img">
@@ -184,10 +189,10 @@
 
     <section class="stats-bar">
         <div class="container stats-grid">
-            <div class="stat-item"><h2>10,000+</h2><p>People Educated</p></div>
-            <div class="stat-item"><h2>200+</h2><p>Survivors Supported</p></div>
-            <div class="stat-item"><h2>150+</h2><p>Community Workshops</p></div>
-            <div class="stat-item"><h2>50+</h2><p>Active Volunteers</p></div>
+            <div class="stat-item"><h2>80%</h2><p>Preventable Strokes</p></div>
+            <div class="stat-item"><h2>Minutes</h2><p>Every Minute Counts</p></div>
+            <div class="stat-item"><h2>10k+</h2><p>People Educated</p></div>
+            <div class="stat-item"><h2>Impact</h2><p>Lives Restored</p></div>
         </div>
     </section>
 
@@ -195,27 +200,70 @@
         <div class="container">
             <div class="center-text">
                 <h2>Our Core Focus Areas</h2>
-                <p>We provide a multi-faceted approach to stroke management in Rwanda, focusing on education, emergency response, and post-stroke life.</p>
+                <p>We deliver a comprehensive, continuum-of-care approach to stroke in Rwanda — integrating public education, risk reduction, emergency response, acute management awareness, rehabilitation, and caregiver support.</p>
             </div>
             <div class="action-grid">
                 <div class="action-card">
-                    <h3>Warning Signs</h3>
-                    <p>Recognize stroke symptoms and know what to do immediately to save a life. Every minute matters.</p>
+                    <h3>Recognize Stroke. Respond Immediately.</h3>
+                    <p> Stroke symptoms appear suddenly and require urgent medical attention. Delayed treatment leads to irreversible brain injury.
+Early recognition and immediate activation of emergency medical services significantly improve survival and functional outcomes.
+</p>
                     <a href="#">Learn more &rarr;</a>
                 </div>
-                <div class="action-card">
+                <div class="focus-card">
                     <h3>Prevention & Risk</h3>
-                    <p>Understand the risks and learn how stroke can be prevented through lifestyle changes and early care.</p>
-                    <a href="#">Learn more &rarr;</a>
+                    <p>Up to 80% of strokes are linked to modifiable risk factors. We focus on:</p>
+                    <ul>
+                        <li>Blood pressure control</li>
+                        <li>Diabetes management and high cholesterol</li>
+                        <li>Smoking cessation</li>
+                        <li>Reduction of harmful alcohol use</li>
+                        <li>Healthy diet and reduced salt intake</li>
+                        <li>Regular physical activity</li>
+                        <li>Air pollution exposure reduction</li><br>
+                        <p>Prevention includes both:</p>
+                        <li><b>Primary prevention</b> – reducing first-time stroke risk</li>
+                        <li><b>Secondary prevention</b> – preventing recurrence after a stroke or TIA</li>
+                        <p>Proactive risk management saves lives and reduces long-term disability.</p>
+                    </ul>
+                    <a href="#" class="learn-more">Learn more →</a>
                 </div>
-                <div class="action-card">
-                    <h3>Recovery & Life</h3>
-                    <p>Information on rehabilitation, long-term care, and living well after stroke for survivors.</p>
-                    <a href="#">Learn more &rarr;</a>
+                 <div class="focus-card">
+                    <h3>Recovery & Life After Stroke</h3>
+                    <p><b>Rehabilitation Restores Function and Independence.</b>
+Stroke recovery does not end at hospital discharge. Long-term outcomes depend on access to structured, multidisciplinary rehabilitation services.
+Effective stroke rehabilitation may include:
+:</p>
+                    <ul>
+                        <li>Physiotherapy for mobility and strength</li>
+                        <li>Occupational therapy for daily living skills</li>
+                        <li>Speech and language therapy</li>
+                        <li>Cognitive rehabilitation</li>
+
+                        <li>Psychological support</li>
+
+                         <li>Community reintegration programs</li>
+                        <li>Early and continuous rehabilitation improves independence, 
+                            <br>reduces complications, and enhances quality of life.</li>
+
+                    </ul>
+                    <a href="#" class="learn-more">Learn more →</a>
                 </div>
-                <div class="action-card">
+                <div class="focus-card">
                     <h3>Caregiver Support</h3>
-                    <p>Guidance, education, and emotional support for those caring for stroke survivors in our community.</p>
+                    <h3>Caregiver Support</h3>
+                    <p>Supporting Those Who Support Survivors.
+Stroke affects entire families. Caregivers play a critical role
+                        in long-term recovery and daily care.
+Stroke Action Rwanda provides:
+</p>
+                    <ul>
+                        <li>Education on safe home care practices</li>
+                        <li>Guidance on rehabilitation exercises</li>
+                        <li>Emotional and psychosocial support</li>
+                        <li>Information on recurrence prevention</li>
+                        <li>Community-based peer support</li>
+                    </ul>
                     <a href="#">Learn more &rarr;</a>
                 </div>
             </div>
@@ -225,37 +273,33 @@
    <section class="section-padding edu-section" id="prevention">
         <div class="container">
             <div class="center-text">
-                <span class="story-tag">Medical Guidance</span>
-                <h2 style="margin-top: 15px;">Think F.A.S.T. to Save a Life</h2>
-                <p>A stroke occurs when blood flow to the brain is interrupted. Timely care is the difference between recovery and permanent disability.</p>
+               <span style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--text-muted);">Medical Guidance</span>
+               <h2 style="margin-top: 10px;">Think F.A.S.T. – Act Immediately</h2>
+                <p>A stroke occurs when blood flow to part of the brain is interrupted due to a blocked artery (ischemic stroke) or a ruptured blood vessel (hemorrhagic stroke). Without oxygen, brain cells begin to die within minutes.<br>
+                Time-sensitive treatments are most effective when delivered rapidly after symptom onset.</p>
             </div>
 
             
 
             <div class="fast-grid">
                 <div class="fast-card">
-                    <span class="letter">F</span>
-                    <h4>Face</h4>
-                    <p>Ask the person to smile. Does one side of the face droop?</p>
+                    <span class="letter">F</span><h3>Face</h3><p>Ask the person to smile. Does one side of the face droop?</p>
                 </div>
                 <div class="fast-card">
-                    <span class="letter">A</span>
-                    <h4>Arms</h4>
-                    <p>Ask them to raise both arms. Does one arm drift downward?</p>
+                    <span class="letter">A</span><h3>Arms</h3><p>Ask them to raise both arms. Does one arm drift downward or feel weak?</p>
                 </div>
                 <div class="fast-card">
-                    <span class="letter">S</span>
-                    <h4>Speech</h4>
-                    <p>Ask them to repeat a simple phrase. Is their speech slurred?</p>
+                    <span class="letter">S</span><h3>Speech</h3><p>Ask them to repeat a simple sentence. Is their speech slurred or difficult to understand?</p>
                 </div>
                 <div class="fast-card">
-                    <span class="letter">T</span>
-                    <h4>Time</h4>
-                    <p>If you see any signs, call emergency services immediately.</p>
+                    <span class="letter">T</span><h3>Time</h3><p>Seek emergency medical care immediately.</p>
                 </div>
             </div>
-            <div style="background: var(green); color:white; padding: 40px; border-radius: 12px; margin-top: 50px; text-align: center;">
-                <h3>If you suspect a stroke, seek emergency medical care immediately. Every minute matters.</h3>
+           <div style="margin-top: 50px; background: var(--primary-green); color: white; padding: 30px; border-radius: 15px; text-align: center;">
+                <h3 style="color: var(--accent-yellow);">If you observe any of these signs, seek emergency medical care immediately.
+Every minute of delay increases the risk of permanent disability.
+If you suspect a stroke, do not wait. Immediate medical evaluation is critical to determine the type of stroke and initiate appropriate treatment.
+</h3>
             </div>
         </div>
     </section>
@@ -264,16 +308,32 @@
         <div class="container">
             <div class="center-text">
                 <h2>Our Higher Purpose</h2>
-                <p style="color: rgba(255,255,255,0.8);">Stroke Action Rwanda is dedicated to reducing the burden of stroke through compassion and evidence-based care.</p>
+               
+                <p>Stroke Action Rwanda is committed to reducing stroke-related death, disability, and socioeconomic impact through:</p>
+                <div>
+                <ul>
+                    <li> ✓Public awareness and education</li>
+                    <li>✓Evidence-based prevention strategies</li>
+                    <li>✓Promotion of timely emergency response</li>
+                    <li>✓Advocacy for organized stroke care systems</li>
+                    <li>✓Support for rehabilitation and long-term recovery</li>
+                    <li>✓Inclusion of survivors and caregivers in health initiatives</li>
+
+
+                </ul>
+                </div>
+                <p>We believe stroke is preventable, treatable, and recoverable, when systems are strong and communities are informed.</p>
             </div>
             <div class="mv-flex">
                 <div class="mv-box">
                     <h3>Our Mission</h3>
-                    <p>To combat stroke through prevention, effective treatment, and comprehensive long-term care and support across Rwanda.</p>
+                    <p>To reduce the incidence, recurrence, , and long-term disability associated with stroke in Rwanda through integrated prevention, advocacy for equitable access to acute stroke treatment,
+                        structured -rehabilitation, caregiver support, and health system strengthening.</p>
                 </div>
                 <div class="mv-box">
                     <h3>Our Vision</h3>
-                    <p>A Rwanda where stroke is prevented whenever possible and every person affected has access to timely care and rehabilitation.</p>
+                    <p>A Rwanda free of severe stroke, where stroke prevention is prioritized within national NCD strategies, where acute stroke care is accessible,
+                        where multidisciplinary rehabilitation services are available across the continuum of care, and where every person affected by a stroke receives comprehensive long-term support.</p>
                 </div>
             </div>
         </div>
@@ -296,7 +356,7 @@
                             <strong style="color: var(--primary-green);">2. Hemorrhagic Stroke:</strong> Caused by a blood vessel that breaks and bleeds into the brain.
                         </li>
                         <li>
-                            <strong style="color: var(--primary-green);">3. TIA (Mini-Stroke):</strong> A temporary blockage that serves as a major warning sign for future strokes.
+                            <strong style="color: var(--primary-green);">3. TIA (Mini-Stroke):</strong> is a temporary blockage of blood flow to the brain. TIA symptoms are similar to stroke symptoms but typically resolve within minutes or hours without permanent brain damage. However, a TIA is a serious warning sign of a possible future stroke.
                         </li>
                     </ul>
                 </div>
@@ -422,16 +482,56 @@ Great courage, high determination and perseverance can help to recover and achie
             </div>
             <div style="max-width: 900px; margin: 0 auto;">
                 <div class="faq-item">
+                    <div class="faq-question">What is Stroke? <span>+</span></div>
+                    <div class="faq-answer">A stroke is a serious medical emergency that occurs when blood flow to part of the brain is interrupted. This can happen due to a blocked blood vessel (ischemic stroke) or a ruptured blood vessel causing bleeding in the brain (hemorrhagic stroke). Without oxygen and nutrients from blood, brain cells begin to die within minutes. Immediate stroke treatment is critical to reduce brain damage, long-term disability, and death.
+Stroke is one of the leading causes of disability and mortality worldwide, including in Rwanda.
+</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What are the warning signs and symptoms of a stroke? <span>+</span></div>
+                    <div class="faq-answer">Stroke symptoms appear suddenly and require urgent medical attention. Use the F.A.S.T. method to recognize stroke:<br>
+
+	Face drooping – One side of the face becomes weak or numb.<br>
+	Arm weakness – One arm feels weak, numb, or cannot be raised.<br>
+	Speech difficulty – Speech is slurred or difficult to understand.<br>
+	Time to go to the hospital immediately.<br>
+
+Other stroke symptoms may include sudden vision problems, confusion, severe headache, dizziness, or loss of balance. Early treatment significantly improves survival and recovery outcomes.
+</div>
+                </div>
+                <div class="faq-item">
                     <div class="faq-question">Can stroke be prevented? <span>+</span></div>
-                    <div class="faq-answer">Yes, 80% of strokes are preventable through healthy lifestyle choices, managing high blood pressure, and regular medical checkups.</div>
+                    <div class="faq-answer">
+Yes, stroke prevention is possible in many cases. The most important risk factor is high blood pressure (hypertension). Other major stroke risk factors include diabetes, high cholesterol, heart disease, smoking, obesity, excessive alcohol consumption, and physical inactivity.
+To reduce stroke risk:<br>
+
+	Monitor and control blood pressure regularly<br>
+	Maintain a healthy diet low in salt and saturated fats<br>
+	Exercise consistently<br>
+	Avoid tobacco use<br>
+	Limit alcohol intake<br>
+	Manage chronic conditions with medical guidance<br>
+
+Preventive care and regular medical check-ups play a vital role in reducing stroke incidence in Rwanda and globally.
+</div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">What is a TIA or "Mini-Stroke"? <span>+</span></div>
-                    <div class="faq-answer">A TIA is a warning sign. It produces stroke-like symptoms that last only a few minutes. It is a medical emergency because it often precedes a full stroke.</div>
+                 <div class="faq-item">
+                    <div class="faq-question">What is a TIA (Transient Ischemic Attack) or “mini-stroke”?<span>+</span></div>
+                    <div class="faq-answer">A Transient Ischemic Attack (TIA) is a temporary blockage of blood flow to the brain. TIA symptoms are similar to stroke symptoms but typically resolve within minutes or hours without permanent brain damage. However, a TIA is a serious warning sign of a possible future stroke.
+Anyone experiencing TIA symptoms should seek immediate medical evaluation to prevent a full stroke through early treatment and risk management.
+</div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">How does Stroke Action Rwanda support survivors? <span>+</span></div>
-                    <div class="faq-answer">We provide rehabilitation resources, emotional support groups, and caregiver education to ensure long-term quality of life.</div>
+                 <div class="faq-item">
+                    <div class="faq-question"> How does Stroke Action Rwanda support stroke survivors and families?<span>+</span></div>
+                    <div class="faq-answer">Stroke Action Rwanda works to combat stroke through prevention, effective treatment awareness, and long-term support initiatives. We:<br>
+
+	Promote public education on stroke symptoms and prevention<br>
+	Advocate for timely access to stroke treatment and rehabilitation<br>
+	Support stroke survivors and caregivers through awareness and community engagement<br>
+	Encourage improved long-term care services and disability support<br>
+
+Our vision is a Rwanda where stroke is prevented whenever possible and every person affected by stroke has access to timely care, rehabilitation, and long-term support.
+</div>
                 </div>
             </div>
         </div>
@@ -523,6 +623,7 @@ Great courage, high determination and perseverance can help to recover and achie
 </body>
 
 </html>
+
 
 
 
