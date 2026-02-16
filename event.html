@@ -4,12 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events & Impact | Stroke Action Rwanda</title>
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-<link rel="shortcut icon" href="favicon_io/favicon.ico">
-    
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -30,39 +25,92 @@
         .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--sar-yellow); }
 
-        /* --- PAGE TITLE --- */
+        /* --- HERO BANNER --- */
         .hero-banner { background: var(--sar-green); color: white; padding: 80px 20px; text-align: center; border-bottom: 5px solid var(--sar-yellow); }
         .hero-banner h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 10px; }
 
-        /* --- FEATURED BIG POST (BRD MEETING STYLE) --- */
+        /* --- SLIDER STYLES --- */
+        .slider-wrapper {
+            position: relative;
+            height: 280px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .image-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            height: 100%;
+            scrollbar-width: none;
+        }
+
+        .image-slider::-webkit-scrollbar { display: none; }
+
+        .image-slider img {
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+            scroll-snap-align: start;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 10px;
+            pointer-events: none;
+        }
+
+        .prev-btn, .next-btn {
+            background: rgba(27, 57, 27, 0.7);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .prev-btn:hover, .next-btn:hover { background: var(--sar-yellow); color: var(--sar-green); }
+
+        /* --- CONTENT TABLES --- */
+        .info-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.85rem; background: #fff; }
+        .info-table th { background: var(--sar-green); color: white; text-align: left; padding: 8px; }
+        .info-table td { border-bottom: 1px solid #ddd; padding: 8px; vertical-align: top; }
+
+        /* --- FEATURED SECTION --- */
         .featured-section { max-width: 1200px; margin: -60px auto 60px; padding: 0 20px; }
         .featured-card { 
             background: white; border-radius: 20px; overflow: hidden; display: flex; flex-wrap: wrap;
             box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
         }
-        .featured-image { flex: 1.2; min-width: 350px; background: url('25/16.jpeg') center/cover; min-height: 400px; }
+        .featured-image { flex: 1.2; min-width: 350px; min-height: 400px; position: relative; }
         .featured-info { flex: 1; padding: 50px; min-width: 350px; }
         .category-tag { background: var(--sar-yellow); color: var(--sar-green); padding: 6px 15px; border-radius: 4px; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; }
-        .featured-info h2 { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; margin: 20px 0; color: var(--sar-green); line-height: 1.2; }
-        .featured-text { font-size: 1.1rem; color: #555; margin-bottom: 30px; }
+        .featured-info h2 { font-family: 'Montserrat', sans-serif; font-size: 2rem; margin: 20px 0; color: var(--sar-green); line-height: 1.2; }
+        .featured-text { font-size: 1rem; color: #555; margin-bottom: 20px; }
 
         /* --- EVENTS GRID --- */
         .event-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; padding: 0 20px; }
         .event-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.4s; }
         .event-card:hover { transform: translateY(-10px); }
-        .card-img { height: 230px; background-size: cover; background-position: center; }
         .card-content { padding: 30px; }
         .event-meta { font-weight: 700; color: var(--sar-green); font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 10px; }
-        .event-card h3 { font-family: 'Montserrat', sans-serif; margin-bottom: 15px; font-size: 1.4rem; }
         
-        .btn-main { display: inline-block; padding: 12px 25px; background: var(--sar-green); color: white; text-decoration: none; border-radius: 6px; font-weight: 700; transition: 0.3s; }
+        .btn-main { display: inline-block; padding: 12px 25px; background: var(--sar-green); color: white; text-decoration: none; border-radius: 6px; font-weight: 700; transition: 0.3s; border: none; cursor: pointer; }
         .btn-main:hover { background: #2d5a2d; box-shadow: 0 5px 15px rgba(27,57,27,0.3); }
 
-        /* --- FOOTER --- */
-        footer { background: var(--sar-green); color: white; padding: 80px 20px; text-align: center; margin-top: 50px; }
+        footer { background: var(--sar-green); color: white; padding: 60px 20px; text-align: center; margin-top: 50px; }
         .social-box a { color: var(--sar-yellow); margin: 0 15px; text-decoration: none; font-size: 1.1rem; }
 
-        /* --- RESPONSIVENESS --- */
         @media (max-width: 768px) {
             .featured-info { padding: 30px; }
             .nav-links { display: none; }
@@ -75,7 +123,7 @@
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo-text">
-                <img src="photo/logo.jpeg" alt="Logo" style="height: 40px; border-radius: 50%;">
+                <img src="photo/logo.jpeg" alt="Logo" style="height: 50px; border-radius: 50%;">
                 Stroke Action Rwanda
             </a>
             <nav class="nav-links">
@@ -89,59 +137,175 @@
 
     <section class="hero-banner">
         <h1>Events & National Impact</h1>
-        <p style="font-size: 1.2rem; opacity: 0.9;">Leading the fight against stroke through awareness and survivor empowerment.</p>
+        <p style="font-size: 1.2rem; opacity: 0.9;">"Together we are alive and strong."</p>
     </section>
 
     <div class="featured-section">
         <div class="featured-card">
-            <div class="featured-image" style="background-image: url('25/16.jpeg');"></div>
-            <div class="featured-info">
-                <span class="category-tag">Empowerment Vision</span>
-                <h2>Reclaiming Dignity: Financial Inclusion for Survivors</h2>
-                <p class="featured-text">
-                    Following our strategic discussions with , we are introducing a hands-on empowerment model. 
-                    This initiative focuses on transitioning stroke survivors from patients to productive economic actors through goal-based savings and financial literacy.
-                </p>
-                <div style="border-left: 4px solid var(--sar-yellow); padding-left: 20px; margin-bottom: 30px;">
-                    <p><strong>Goal:</strong> National Economic Priority for Survivors</p>
-                    <p><strong>Partner:</strong> Aligning with   Financial Strategy</p>
+            <div class="featured-image slider-wrapper">
+                <div class="image-slider" id="featuredSlider">
+                    <img src="25/16.jpeg" alt="Retreat Botanical Gardens">
+                    <img src="25/17.jpeg" alt="Strategic Presentations">
+                    <img src="25/12.jpg" alt="Group Dialogue">
+                    <img src="25/16.jpeg" alt="Kimezamiryango Center">
                 </div>
-                <a href=".html" class="btn-main" style="background: var(--sar-yellow); color: var(--sar-green);">Partner With Us</a>
+                <div class="slider-nav">
+                    <button class="prev-btn" onclick="moveSlider('featuredSlider', -1)">&#10094;</button>
+                    <button class="next-btn" onclick="moveSlider('featuredSlider', 1)">&#10095;</button>
+                </div>
+            </div>
+            <div class="featured-info">
+                <span class="category-tag">Strategic Planning</span>
+                <h2>Annual Strategic Mini-Retreat</h2>
+                <p class="featured-text"><strong>Theme: Reflection, Resilience, and Re-evaluating Our Path Forward</strong></p>
+                <p class="featured-text">Held at Kimezamiryango Center, this retreat allowed survivors, caregivers, and leadership to conduct a comprehensive organizational review of SAR's progress since 2019.</p>
+                
+                <table class="info-table">
+                    <tr><th>Pillar</th><th>Focus Area</th></tr>
+                    <tr><td>Identity</td><td>Re-affirming survivors as advocates.</td></tr>
+                    <tr><td>Review</td><td>Evaluating milestones since founding.</td></tr>
+                    <tr><td>Needs</td><td>Localized "home-grown" solutions.</td></tr>
+                </table>
+                
+                <a href="contact.html" class="btn-main" style="background: var(--sar-yellow); color: var(--sar-green);">Support Us</a>
             </div>
         </div>
     </div>
 
     <div class="event-grid">
         <div class="event-card">
-            <div class="card-img" style="background-image: url('25/6.jpg');"></div>
+            <div class="slider-wrapper">
+                <div class="image-slider" id="event1Slider">
+                    <img src="25/6.jpg" alt="WSD 2024 Walk">
+                    <img src="25/5.jpg" alt="Screening Clinic">
+                    <img src="25/8.jpg" alt="Public Awareness">
+                    <img src="25/20.jpg" alt="FAST Signs Demo">
+                </div>
+                <div class="slider-nav">
+                    <button class="prev-btn" onclick="moveSlider('event1Slider', -1)">&#10094;</button>
+                    <button class="next-btn" onclick="moveSlider('event1Slider', 1)">&#10095;</button>
+                </div>
+            </div>
             <div class="card-content">
                 <span class="event-meta">Annual Event • Oct 29</span>
-                <h3>World Stroke Day Walk</h3>
-                <p>Our national campaign to educate Rwandans on the F.A.S.T. signs and the importance of early intervention.</p>
-                <br>
-                <a href="#" class="btn-main">Read Summary</a>
+                <h3>World Stroke Day Campaigns</h3><br>
+                <h3>Stroke Awareness & Prevention Advocate</h3>
+                <p>World Stroke Day takes place on<b> 29 October </b>every year. This global awareness day was established by the World Stroke Organization (WSO). It provides a global platform to increase awareness and drive action on stroke, focusing on risk factors, signs of stroke, and advocating for better treatment and support for survivors.
+<b>Global Impact and Statistics</b>
+</p>
+                <ul style="font-size: 0.85rem; margin: 10px 0; padding-left: 20px;">
+                    <li><strong>Stroke is the second leading cause of death worldwide.</strong></li>
+                    <li><strong>It causes 6.5 million deaths every year.</strong></li>
+                    <li><strong>It is the leading cause of severe disability.</strong></li>
+                    <li><strong>85% of all strokes occur in developing countries with limited resources.</strong></li>
+                    <li><strong>Crucially, 80% of stroke risk factors are preventable.</strong></li>
+                </ul>
+                <strong><p>World Stroke Day in Rwanda</p></strong>
+                 <ul style="font-size: 0.85rem; margin: 10px 0; padding-left: 20px;">
+                    <li><strong>Stroke Action Rwanda (SAR) became a member of the WSO on 25 June 2021.</strong></li>
+                    <li><strong>The first celebration in Rwanda was held on 29 October 2021 at Hotel Serena, Kigali.</strong></li>
+                    <li><strong>Local Statistics: In Rwanda, stroke is the third leading cause of death. From 2009 to 2019, deaths due to stroke increased by 41.1%.</strong></li>
+                    <li><strong>85% of all strokes occur in developing countries with limited resources.</strong></li>
+                    <li><strong>Prevalence: A study reported a stroke prevalence of 2,100 per 100,000 population.</strong></li>
+                    <li><strong>2025:</strong> Every minute counts: let’s act FAST</li>
+                </ul>
+                       <strong> <p>Annual Themes and Campaigns</p></strong>
+              <ul style="font-size: 0.85rem; margin: 10px 0; padding-left: 20px;">
+                    <li><strong>2021 & 2022: </strong> “Minutes can save lives” – Focused on the need for timely access to quality treatment.</li>
+                  <li><strong>2023:</strong> “Together we can be #Greater than Stroke” – Focused on prevention (checking blood pressure, quitting smoking, and physical activity).</li>
+                  <li><strong>2024:</strong>Continued the theme “Together We can be greater than Stroke”, co-organized by the Private Sector Federation (PSF) and SAR.</li>
+                  <li><strong>2025:</strong> : “Every minute counts: let’s act Together and act FAST” – Held at Hotel Ste Famille and sponsored by the Umbrella of People with Disability in the fight against HIV&AIDS and Health Promotion.</li>
+                </ul>
             </div>
         </div>
 
         <div class="event-card">
-            <div class="card-img" style="background-image: url('25/15.jpeg');"></div>
+            <div class="slider-wrapper">
+                <div class="image-slider" id="event2Slider">
+                    <img src="25/15.jpeg" alt="PSG Meeting">
+                    <img src="25/21.JPEG" alt="Mutual Aid">
+                    <img src="25/22.JPEG" alt="Counseling Session">
+                    <img src="25/26.jpg" alt="WhatsApp Support">
+                </div>
+                <div class="slider-nav">
+                    <button class="prev-btn" onclick="moveSlider('event2Slider', -1)">&#10094;</button>
+                    <button class="next-btn" onclick="moveSlider('event2Slider', 1)">&#10095;</button>
+                </div>
+            </div>
             <div class="card-content">
-                <span class="event-meta">Weekly Program • Kigali</span>
-                <h3>Survivor Support Circles</h3>
-                <p>Peer-led support groups providing emotional and physical recovery guidance for survivors and caregivers.</p>
-                <br>
-                <a href="#" class="btn-main">Join a Group</a>
+                <span class="event-meta">Stroke Peer Support Groups (PSGs)</span>
+                <h3>Peer Support Framework</h3>
+                <p>Stroke Action Rwanda (SAR) implements a community-based rehabilitation (CBR) model designed to mitigate the long-term physical, psychological, and socio-economic impacts of stroke. Our Peer Support Groups serve as a critical intervention point for social inclusion, secondary prevention, and economic recovery.<br>
+<strong>The Peer Support Framework </strong><br>
+In the context of stroke recovery, "Peers" are defined as survivors and caregivers who share the lived experience of cerebrovascular accidents. This shared identity fosters a unique environment of mutual empathy, practical knowledge transfer, and emotional resilience.
+<strong>Our Motto: "Together we are alive and strong."</strong><br>
+
+<strong>Operational Modalities</strong><br>
+We utilize a hybrid approach to ensure maximum reach across diverse target groups, including urban and rural populations with varying literacy levels.
+<strong>A. Virtual Advocacy & Communication (WhatsApp)</strong>
+The "Stroke Action Rwanda" digital forum acts as a nationwide auxiliary support network for real-time counseling and FAQ management.
+<strong>B. District-Level Pilot PSGs</strong><br> 
+We currently operate intensive pilot groups in Gasabo, Kicukiro, Bugesera, Musanze, and Kamonyi, Districts consisting of 8–15 members led by a   Team Lead Stroke Suvivor elected by peers.
+<strong>Socio-Economic Empowerment: The Kicukiro Model</strong><br> 
+A landmark achievement in our program is the establishment of internal financial structures, pioneered by the Kicukiro Peer Support Group. This initiative transitions the PSG from a support circle into a micro-economic engine.
+<strong>Structured Internal Savings and Loan Scheme</strong><br> 
+Members have successfully implemented a system of regular savings contributions to enhance financial resilience.
+•	Micro-Credit Access: Members can access low-value, low-interest loans to seed income-generating micro-enterprises.<br>
+•	Solidarity Fund: A dedicated monthly contribution serves as an emergency social safety net, providing immediate financial relief for members facing urgent medical or personal crises.<br>
+•	Progressive Self-Reliance: While currently limited by the saving capacity of members, this model represents a significant milestone in financial inclusion and mutual aid.<br>
+SAR leadership is currently working to evaluate and standardize this model to scale it across all district PSGs as a core programmatic component.<br>
+                   <strong> Technical Focus & Holistic Health</strong><br>
+Our PSG sessions are governed by a Total Pain Assessment model, addressing the four dimensions of human recovery:
+
+</p>
+                
+                <table class="info-table">
+                    <tr><th>Dimension</th><th>Intervention Strategy</th></tr>
+                    <tr><td>Physical</td><td>Digital Health Integration: Utilizing the Jm’entraine app (ISPC Synergies) for home-based kinesiology and muscle spasticity prevention.</td></tr>
+                    <tr><td>Psychological</td><td>Mitigation of post-stroke depression (PSD) and anxiety through story telling to share lived experience and tailored counselling by a counsellor.</td></tr>
+                    <tr><td>Socio-Economic</td><td>Implementation of the Savings and Loan Scheme to restore financial autonomy and fund micro-enterprises.</td></tr>
+                    <tr><td>Spiritual/Social</td><td>Restoring dignity through the Stroke Survivor Bill of Rights and fostering community inclusion.</td></tr>
+                    <tr><td>Well-being</td><td>Vital signs checks ( blood sugar, blood pression)</td></tr>
+                </table>
+               <strong> <p>Use of Digital Application: “Jm’entraine” to promote physical activity</p></strong>
+                <p>To promote neuroplasticity and physical independence, SAR integrates the Jm’entraine application into our rehabilitation protocols.<br>
+<b>• Mechanism:</b> Customized, coach-guided exercise regimens that reduce caregiver dependency.
+<b>• Impact:</b> By enabling independent physical activity, we free up time for caregivers to engage in economic activities, further supporting the household's financial stability.
+</p>
+                <p><b>Roadmap for Scalability</b><br>
+Despite the success of our pilot districts, systemic barriers such as the digital divide (lack of smartphones) and family-imposed stigma remain.
+Future Objectives:<br>
+<strong>1.	Standardization:</strong> Formalizing the Kicukiro savings model into a national "Stroke Survivor Cooperative Framework."
+<strong>2.	Advocacy: </strong>Engaging local government to integrate these PSGs into district-level NCD prevention and social protection schemes.
+<strong>3.	Expansion:</strong> Onboarding survivors in districts where SAR has not yet established a physical presence.
+</p>
+                <a href="contact.html" class="btn-main">Join a Group</a>
             </div>
         </div>
 
         <div class="event-card">
-            <div class="card-img" style="background-image: url('25/18.jpeg');"></div>
+            <div class="slider-wrapper">
+                <div class="image-slider" id="event3Slider">
+                    <img src="25/18.jpeg" alt="Savings Scheme">
+                    <img src="25/31.jpg" alt="Economic Autonomy">
+                    <img src="25/32.jpg" alt="Micro-enterprise">
+                    <img src="25/35.jpeg" alt="Member Solidarity">
+                </div>
+                <div class="slider-nav">
+                    <button class="prev-btn" onclick="moveSlider('event3Slider', -1)">&#10094;</button>
+                    <button class="next-btn" onclick="moveSlider('event3Slider', 1)">&#10095;</button>
+                </div>
+            </div>
             <div class="card-content">
-                <span class="event-meta">Community Outreach</span>
-                <h3>Rural Prevention Clinics</h3>
-                <p>Bringing blood pressure screenings and stroke education to rural districts across Rwanda’s provinces.</p>
-                <br>
-                <a href="#" class="btn-main">See Our Reach</a>
+                <span class="event-meta">Economic Recovery</span>
+                <h3>Financial Inclusion Model</h3>
+                <p>The Kicukiro PSG pioneered an internal savings and loan scheme to transition survivors from patients into micro-economic engines.</p>
+                <ul style="font-size: 0.85rem; margin: 10px 0; padding-left: 20px;">
+                    <li><strong>Savings:</strong> Regular resilience contributions.</li>
+                    <li><strong>Micro-Credit:</strong> Low-interest enterprise loans.</li>
+                    <li><strong>Solidarity Fund:</strong> Emergency medical safety net.</li>
+                </ul>
+                <a href="#" class="btn-main">Scale the Model</a>
             </div>
         </div>
     </div>
@@ -149,16 +313,24 @@
     <footer>
         <div class="container">
             <h2 style="color: var(--sar-yellow); margin-bottom: 20px;">Stroke Action Rwanda</h2>
-            <p>Reducing the burden of stroke in Rwanda through prevention and care.</p>
-            <div class="social-box" style="margin: 30px 0;">
-                <a href="https://x.com/strokeaction_rw?s=11">X (Twitter)</a>
-                <a href="https://www.instagram.com/strokeaction_rw?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Instagram</a>
-                <a href="https://www.facebook.com/share/1C4ojJXViC/?mibextid=wwXIfr">Facebook</a>
+            <p>Reducing the burden of stroke in Rwanda through prevention, care, and economic empowerment.</p>
+            <div class="social-box" style="margin-top: 20px;">
+                <a href="https://x.com/strokeaction_rw">X (Twitter)</a>
+                <a href="https://instagram.com/strokeaction_rw">Instagram</a>
             </div>
-            <p style="font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Stroke Action Rwanda. Registered NGO.</p>
+            <p style="font-size: 0.8rem; opacity: 0.7; margin-top:20px;">&copy; 2026 Stroke Action Rwanda. Registered NGO.</p>
         </div>
     </footer>
 
+    <script>
+        function moveSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const scrollAmount = slider.clientWidth;
+            slider.scrollBy({
+                left: scrollAmount * direction,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
-
 </html>
