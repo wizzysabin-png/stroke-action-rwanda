@@ -159,44 +159,55 @@
         .story-tag { background: var(--accent-yellow); color: var(--primary-green); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; }
 
         /* --- GALLERY --- */
-      /* 1. The Container: This creates the 3x2 grid */
+/* 1. The Container: This creates the 3x2 grid */
 .gallery-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
-    gap: 15px; /* Space between photos */
+    gap: 20px; /* Slightly larger gap for ad-style breathing room */
     margin-top: 30px;
 }
 
-/* 2. Your specific gallery-img class (Unchanged as requested) */
+/* 2. Your specific gallery-img class (Fixed height added for 'Ad' look) */
 .gallery-img { 
     width: 100%;
-    margin-bottom: 15px; 
+    height: 250px; /* Added fixed height to make rows perfectly even like an advertisement */
+    margin-bottom: 0px; /* Removed margin-bottom since gap handles spacing */
     border-radius: 12px; 
     overflow: hidden; 
-    display: inline-block; 
+    display: block; 
     background: #f0f0f0;
     border: 1px solid #eee;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* 3. The Photo: Adjusted to fill the grid box perfectly */
+/* 3. The Photo: Optimized to 'Fit' perfectly in the box */
 .gallery-img img { 
-    width: 100%; /* Changed to 100% to fit the 3-column grid width */
-    height: auto; 
-    display: block; /* Changed from grid-template-columns to block */
-    transition: 0.5s; 
+    width: 100%; 
+    height: 100%; /* Fill the entire 250px height */
+    object-fit: cover; /* Ensures landscape photos fill the box without empty space */
+    display: block; 
+    transition: transform 0.6s ease; 
 }
 
-/* 4. Interactive Zoom on Hover */
+/* 4. Interactive 'Ad-Style' Zoom on Hover */
 .gallery-img:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-8px); /* Subtle lift */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 .gallery-img:hover img { 
-    transform: scale(1.00); 
+    transform: scale(1.1); /* Zoom in effect for advertising impact */
 }
 
+/* Mobile Compatibility: 1 column on phones */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .gallery-img {
+        height: 200px;
+    }
+}
 /* Responsive: Stack them on top of each other on small mobile screens */
 @media (max-width: 600px) {
     .gallery-grid {
@@ -741,6 +752,7 @@ Our vision is a Rwanda where stroke is prevented whenever possible and every per
 </body>
 
 </html>
+
 
 
 
