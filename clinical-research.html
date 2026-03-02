@@ -1,21 +1,46 @@
-<iframe id="espCtEmbed" 
-    src="https://clinicaltrials.globalhearthub.org/?embedded=true&utm_source=GHH&utm_medium=referral&utm_campaign=clinical_research_initiative&utm_content=affiliate_website" 
-    style="width:1px; min-width:100%; height:800px; background:#fff; border:none;" 
-    frameborder="0" scrolling="no">
-</iframe>
+<head><style>
+    /* Container to ensure the GHH toolkit fits all screens */
+    .research-wrapper {
+        width: 100%;
+        max-width: 1200px; /* Limits width on big desktops */
+        margin: 30px auto;    /* Centers it and adds vertical spacing */
+        padding: 0 15px;      /* Prevents edge-to-edge touching on mobile */
+        overflow: hidden;     /* Prevents horizontal scrolling */
+    }
 
-<script crossorigin="anonymous" 
-    integrity="sha512-9kUjCzb6YMm8ZUz/aznqO+9C8QHGr6CLFm654REUYPj2zJZuBoRMygSYhs+vXUQRRJprKjzgxkrdOLTSNhmMag==" 
-    referrerpolicy="no-referrer" 
-    src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.11/iframeResizer.min.js">
-</script>
+    /* Force the GHH iframe to be responsive regardless of internal settings */
+    #espCtEmbed {
+        width: 1px !important;
+        min-width: 100% !important;
+        border: 1px solid #eee; /* Light border to match your Stroke Action Rwanda design */
+        border-radius: 12px;    /* Matches your gallery-item and card styles */
+    }
+</style></head>
+<div class="research-wrapper">
+    <iframe id="espCtEmbed" 
+        src="https://clinicaltrials.globalhearthub.org/?embedded=true&utm_source=GHH&utm_medium=referral&utm_campaign=clinical_research_initiative&utm_content=affiliate_website" 
+        style="width:1px; min-width:100%; height:800px; background:#fff; border:none;" 
+        frameborder="0" scrolling="no">
+    </iframe>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        if ("undefined" !== typeof iFrameResize) {
-            iFrameResize({ checkOrigin: 1, heightCalculationMethod: "taggedElement", tolerance: 0, log: 1 }, "#espCtEmbed");
-        } else {
-            console.warn("iframe-resizer failed to load");
-        }
-    });
-</script>
+    <script crossorigin="anonymous" 
+        integrity="sha512-9kUjCzb6YMm8ZUz/aznqO+9C8QHGr6CLFm654REUYPj2zJZuBoRMygSYhs+vXUQRRJprKjzgxkrdOLTSNhmMag==" 
+        referrerpolicy="no-referrer" 
+        src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.11/iframeResizer.min.js">
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if ("undefined" !== typeof iFrameResize) {
+                iFrameResize({ 
+                    checkOrigin: 1, 
+                    heightCalculationMethod: "taggedElement", 
+                    tolerance: 0, 
+                    log: 1 
+                }, "#espCtEmbed");
+            } else {
+                console.warn("iframe-resizer failed to load");
+            }
+        });
+    </script>
+</div>
