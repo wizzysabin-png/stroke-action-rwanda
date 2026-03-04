@@ -201,10 +201,24 @@
   border-bottom: 5px solid var(--accent-yellow);
 }
 
-/* board layout: 2 big cards + 3 smaller */
-.board-card.big { grid-column: span 6; }
-.board-card.small { grid-column: span 4; height: 400px; border-bottom-width: 4px; }
+/* PRESIDENT & VICE PRESIDENT SIZE FIX */
+.board-card.big {
+  grid-column: span 4;   /* smaller width */
+  height: 420px;         /* balanced height */
+}
 
+/* OTHER BOARD MEMBERS */
+.board-card.small {
+  grid-column: span 4;
+  height: 400px;
+  border-bottom-width: 4px;
+}
+
+/* ensure face stays centered */
+.board-card img {
+  object-fit: cover;
+  object-position: center 15%;
+}
 /* TEAM GRID (clean) */
 .team-grid {
   display: grid;
@@ -467,6 +481,7 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
 </body>
 
 </html>
+
 
 
 
