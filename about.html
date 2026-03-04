@@ -230,6 +230,44 @@
     object-fit: cover;
     object-position: center 15%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* BOARD: President & Vice President on top row */
+.team-grid .board-top{
+  grid-column: span 6;     /* takes half row each => 2 on top */
+  height: 380px;           /* same size as volunteer */
+}
+
+/* Board members below (3 in a row) */
+.team-grid .team-card:not(.board-top){
+  grid-column: span 4;     /* 3 cards per row */
+  height: 380px;           /* same size */
+}
+
+/* Responsive */
+@media (max-width: 1100px){
+  .team-grid .board-top{ grid-column: span 12; }      /* 1 per row */
+  .team-grid .team-card:not(.board-top){ grid-column: span 6; } /* 2 per row */
+}
+
+@media (max-width: 650px){
+  .team-grid .board-top,
+  .team-grid .team-card:not(.board-top){
+    grid-column: span 12;  /* 1 per row */
+    height: 360px;
+  }
+}
     </style>
 </head>
 <body>
@@ -365,7 +403,7 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
 </div>
 
       <div class="team-grid">
-<div class="team-card">
+<div class="team-card board-top">
 <img src="admin/1.jpeg" alt="President">
 <div class="card-overlay">               
                     <h4 style="font-size: 1.4rem;">Dr. Joseph Rukelibuga</h4>
@@ -373,7 +411,7 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
                 </div>
             </div>
 
-           <div class="team-card">
+          <div class="team-card board-top">
  <img src="admin/2.jpeg" alt="Vice President">
 <div class="card-overlay">
                     <h4 style="font-size: 1.4rem;">Ms. Alexia Uwajeneza</h4>
@@ -466,6 +504,7 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
 </body>
 
 </html>
+
 
 
 
