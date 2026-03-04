@@ -195,30 +195,6 @@
   font-size: 0.78rem;
 }
 
-/* board card sizes (uniform ratio) */
-.board-card {
-  height: 460px;
-  border-bottom: 5px solid var(--accent-yellow);
-}
-
-/* PRESIDENT & VICE PRESIDENT SIZE FIX */
-.board-card.big {
-  grid-column: span 4;   /* smaller width */
-  height: 420px;         /* balanced height */
-}
-
-/* OTHER BOARD MEMBERS */
-.board-card.small {
-  grid-column: span 4;
-  height: 400px;
-  border-bottom-width: 4px;
-}
-
-/* ensure face stays centered */
-.board-card img {
-  object-fit: cover;
-  object-position: center 15%;
-}
 /* TEAM GRID (clean) */
 .team-grid {
   display: grid;
@@ -244,6 +220,15 @@
   .board-card.small { grid-column: span 12; height: 380px; }
   .team-card { grid-column: span 12; height: 360px; }
   .card-overlay { padding: 18px; }
+}
+
+
+
+
+        /* Make board images same size as volunteer team */
+.team-card img{
+    object-fit: cover;
+    object-position: center 15%;
 }
     </style>
 </head>
@@ -379,8 +364,8 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
   <div class="bar"></div>
 </div>
 
-       <div class="board-grid">
-<div class="board-card big">
+      <div class="team-grid">
+<div class="team-card">
 <img src="admin/1.jpeg" alt="President">
 <div class="card-overlay">               
                     <h4 style="font-size: 1.4rem;">Dr. Joseph Rukelibuga</h4>
@@ -388,7 +373,7 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
                 </div>
             </div>
 
-            <div class="board-card big">
+           <div class="team-card">
  <img src="admin/2.jpeg" alt="Vice President">
 <div class="card-overlay">
                     <h4 style="font-size: 1.4rem;">Ms. Alexia Uwajeneza</h4>
@@ -396,7 +381,7 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
                 </div>
             </div>
 
-           <div class="board-card small">
+          <div class="team-card">
 <img src="admin/5.jpeg" alt="Executive Secretary">
 <div class="card-overlay">
                     <h4>PT. Jean Paul Hakizimana</h4>
@@ -404,7 +389,7 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
                 </div>
             </div>
 
-          <div class="board-card small">
+         <div class="team-card">
 <img src="admin/7.jpeg" alt="Audit Committee">
 <div class="card-overlay">
  <h4>Mr. Silas Mutsindashyaka</h4>
@@ -412,7 +397,7 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
                 </div>
             </div>
 
-           <div class="board-card small">
+           <div class="team-card">
 <img src="admin/4.jpeg" alt="Conflict Resolution">
 <div class="card-overlay">
  <h4>Mr. Robert Twongyeirwe</h4>
@@ -481,6 +466,7 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
 </body>
 
 </html>
+
 
 
 
