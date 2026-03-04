@@ -268,6 +268,69 @@
     height: 360px;
   }
 }
+
+
+
+
+
+
+
+
+        /* ==========================
+   FIX TOP 2 CARDS (PORTRAIT + TOP)
+   ========================== */
+
+/* Make board section grid */
+.board-wrap .team-grid{
+  align-items: start;          /* keep cards starting from top */
+}
+
+/* President + Vice President: portrait cards */
+.board-wrap .team-card.board-top{
+  grid-column: span 6;         /* 2 cards on the top row */
+  height: 520px;               /* portrait height */
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* Make other board members appear on next row (3 per row) */
+.board-wrap .team-card:not(.board-top){
+  grid-column: span 4;         /* 3 cards per row */
+  height: 420px;               /* portrait too, but smaller */
+}
+
+/* Improve how faces are cropped (show head properly) */
+.board-wrap .team-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 8%;  /* move crop UP to keep faces + hair */
+}
+
+/* Optional: reduce zoom-on-hover for board so it doesn’t look “too close” */
+.board-wrap .team-card:hover img{
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 1100px){
+  .board-wrap .team-card.board-top{
+    grid-column: span 12;      /* stack top cards */
+    height: 520px;
+  }
+  .board-wrap .team-card:not(.board-top){
+    grid-column: span 6;       /* 2 per row */
+    height: 420px;
+  }
+}
+
+@media (max-width: 650px){
+  .board-wrap .team-card.board-top,
+  .board-wrap .team-card:not(.board-top){
+    grid-column: span 12;      /* 1 per row */
+    height: 420px;
+  }
+}
     </style>
 </head>
 <body>
@@ -504,6 +567,7 @@ Accountability extends to beneficiaries, partners, donors, regulators, and the p
 </body>
 
 </html>
+
 
 
 
