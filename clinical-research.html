@@ -1,141 +1,65 @@
-<html>
-    <head>
-    <style>
-    /* Container to ensure the GHH toolkit fits all screens */
-    .research-wrapper {
-        width: 100%;
-        max-width: 1200px; /* Limits width on big desktops */
-        margin: 30px auto;    /* Centers it and adds vertical spacing */
-        padding: 0 15px;      /* Prevents edge-to-edge touching on mobile */
-        overflow: hidden;     /* Prevents horizontal scrolling */
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.11/iframeResizer.contentWindow.min.js"></script>
+
+<iframe 
+
+  id="espCtEmbed"
+
+  src="https://clinicaltrials.globalhearthub.org/en/search"
+
+  style="width: 100%; min-width: 100%; border: none; background: white; min-height: 1000px;"
+
+  loading="lazy"
+
+  scrolling="no">
+
+</iframe>
+
+<script 
+
+  src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.11/iframeResizer.min.js"
+
+  integrity="sha512-9kUjCzb6YMm8ZUz/aznqO+9C8QHGr6CLFm654REUYPj2zJzuBoRMygSYhs+vXUQRRJprKjzgxkrdOLTSNhmMag=="
+
+  crossorigin="anonymous" 
+
+  referrerpolicy="no-referrer">
+
+</script>
+
+<script>
+
+  window.addEventListener('load', function () {
+
+    if (window.iFrameResize) {
+
+      iFrameResize({
+
+        checkOrigin: false,
+
+        heightCalculationMethod: 'lowestElement',
+
+        tolerance: 50,
+
+        minHeight: 800,
+
+        scrolling: false,
+
+        warningTimeout: 0,
+
+        onResized: function(data) {
+
+          console.log('iFrame resized:', data.height);
+
+        }
+
+      }, '#espCtEmbed');
+
+    } else {
+
+      document.getElementById('espCtEmbed').style.height = '1200px';
+
     }
 
-    /* Force the GHH iframe to be responsive regardless of internal settings */
-    #espCtEmbed {
-        width: 1px !important;
-        min-width: 100% !important;
-        border: 1px solid #eee; /* Light border to match your Stroke Action Rwanda design */
-        border-radius: 12px;    /* Matches your gallery-item and card styles */
-    }
-         /* --- FOOTER --- */
-        footer { background: var(--primary-green); color: var(--white); padding: 80px 0 30px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; }
-        .footer-col h4 { color: var(--accent-yellow); margin-bottom: 25px; text-transform: uppercase; font-size: 0.9rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 12px; }
-        .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; }
-       .social-icons { 
-    display: flex; 
-    gap: 15px; 
-    margin-top: 20px; 
-}
+  });
 
-.social-icons a { 
-    background: rgba(255,255,255,0.1); 
-    width: 40px; 
-    height: 40px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    border-radius: 50%; 
-    color: white; 
-    text-decoration: none; 
-    font-size: 1.2rem; /* Size of the icon */
-    transition: all 0.3s ease;
-}
-
-.social-icons a:hover { 
-    background: var(--accent-yellow); 
-    color: var(--primary-green); 
-    transform: translateY(-3px); 
-}
-</style>
-    </head>
-   <body> 
-
-
-<div class="research-wrapper">
-    <iframe id="espCtEmbed" 
-        src="https://clinicaltrials.globalhearthub.org/?embedded=true&utm_source=GHH&utm_medium=referral&utm_campaign=clinical_research_initiative&utm_content=affiliate_website" 
-        style="width:1px; min-width:100%; height:800px; background:#fff; border:none;" 
-        frameborder="0" scrolling="no">
-    </iframe>
-
-    <script crossorigin="anonymous" 
-        integrity="sha512-9kUjCzb6YMm8ZUz/aznqO+9C8QHGr6CLFm654REUYPj2zJZuBoRMygSYhs+vXUQRRJprKjzgxkrdOLTSNhmMag==" 
-        referrerpolicy="no-referrer" 
-        src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.11/iframeResizer.min.js">
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            if ("undefined" !== typeof iFrameResize) {
-                iFrameResize({ 
-                    checkOrigin: 1, 
-                    heightCalculationMethod: "taggedElement", 
-                    tolerance: 0, 
-                    log: 1 
-                }, "#espCtEmbed");
-            } else {
-                console.warn("iframe-resizer failed to load");
-            }
-        });
-    </script>
-</div>
-         <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h2 style="color: white; margin-bottom: 20px;">Stroke Action Rwanda</h2>
-                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px;">Working to prevent stroke, ensure early treatment, and support long-term recovery for individuals and families across Rwanda.</p>
-                  <div class="social-icons">
-    <a href="https://x.com/strokeaction_rw?s=11" target="_blank" aria-label="Twitter">
-        <i class="fa-brands fa-x-twitter"></i>
-    </a>
-    
-    <a href="https://www.facebook.com/share/1C4ojJXViC" target="_blank" aria-label="Facebook">
-        <i class="fa-brands fa-facebook-f"></i>
-    </a>
-    
-    <a href="https://www.instagram.com/strokeaction_rw" target="_blank" aria-label="Instagram">
-        <i class="fa-brands fa-instagram"></i>
-    </a>
-    
-    <a href="https://m.youtube.com/@250SAR" target="_blank" aria-label="YouTube">
-        <i class="fa-brands fa-youtube"></i>
-    </a>
-</div>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                   <strong> <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="signs.html">Warning Signs</a></li>
-                        <li><a href="donate.html">Donate</a></li>
-                    </ul></strong>
-                </div>
-                <div class="footer-col">
-                    <h4>Support</h4>
-                   <strong> <ul>
-                        <li><a href="caregiver_guides.html">Caregiver Guides</a></li>
-                        <li><a href="rehabilitation.html">Rehabilitation</a></li>
-                        <li><a href="get-involved.html">Get Involved</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul></strong>
-                </div>
-                <div class="footer-col">
-                    <h4>Newsletter</h4>
-                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 20px;">Stay informed on stroke prevention and recovery.</p>
-                    <form style="display:flex;">
-                        <input type="email" placeholder="Your Email" style="padding: 12px; border: none; border-radius: 4px 0 0 4px; width: 100%;">
-                        <button type="submit" style="background: var(--accent-yellow); border: none; padding: 12px 20px; border-radius: 0 4px 4px 0; font-weight: 700; cursor: pointer;">Join</button>
-                    </form>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 60px; color: rgba(255,255,255,0.4); font-size: 0.8rem;">
-                <p>&copy; 2026 Stroke Action Rwanda. All rights reserved. | <a href="privacy.html" style="color: inherit;">Privacy Policy</a> | <a href="terms.html" style="color: inherit;">Terms of Use</a></p>
-            </div>
-        </div>
-    </footer>
-    </body>
-</html>
+</script>
