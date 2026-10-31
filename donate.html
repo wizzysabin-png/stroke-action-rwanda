@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate | Stroke Action Rwanda</title>
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon_io/favicon.ico">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- SHARED CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --text-muted: #555555;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; background-color: var(--white); }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 30px; }
+        .section-padding { padding: 80px 0; }
+        
+        /* --- SHARED NAVIGATION --- */
+        header { background: var(--primary-green); padding: 20px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.2rem; font-weight: 800; color: var(--white); text-transform: uppercase; text-decoration: none; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-yellow); }
+        .btn-yellow { background: var(--accent-yellow); color: var(--primary-green); padding: 12px 25px; border-radius: 6px; font-weight: 700; text-decoration: none; display: inline-block; border: none; cursor: pointer; }
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- DONATE PAGE SPECIFIC STYLES --- */
+        .page-header { 
+            background: linear-gradient(rgba(27, 57, 27, 0.8), rgba(27, 57, 27, 0.8)), url('https://placehold.co/1200x500/1B391B/white?text=Support+Our+Mission');
+            background-size: cover;
+            background-position: center;
+            padding: 160px 0 100px;
+            color: white;
+            text-align: center;
+        }
+        .page-header h1 { color: var(--accent-yellow); font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 20px; }
+
+        .donate-flex { display: flex; gap: 60px; flex-wrap: wrap; margin-top: 40px; }
+        .donate-info { flex: 1; min-width: 320px; }
+        .donate-form-container { flex: 1; min-width: 320px; background: var(--soft-bg); padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid #eee; }
+
+        /* Process Steps */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin: 60px 0; }
+        .step-card { text-align: center; position: relative; }
+        .step-number { width: 50px; height: 50px; background: var(--primary-green); color: var(--accent-yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 20px; }
+        
+        /* Donation Form Elements */
+        .amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 25px; }
+        .amount-btn { padding: 15px; border: 2px solid var(--primary-green); border-radius: 8px; background: white; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .amount-btn:hover, .amount-btn.active { background: var(--primary-green); color: white; }
+        
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; }
+
+        .impact-list { list-style: none; margin-top: 30px; }
+        .impact-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+        .impact-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary-green); font-weight: 900; }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 1024px) {
+            .menu-toggle { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--primary-green); padding: 20px; }
+            .nav-links.active { display: flex; }
+        }
+         /* --- FOOTER --- */
+        footer { background: var(--primary-green); color: var(--white); padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; }
+        .footer-col h4 { color: var(--accent-yellow); margin-bottom: 25px; text-transform: uppercase; font-size: 0.9rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; }
+       .social-icons { 
+    display: flex; 
+    gap: 15px; 
+    margin-top: 20px; 
+}
+
+.social-icons a { 
+    background: rgba(255,255,255,0.1); 
+    width: 40px; 
+    height: 40px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 50%; 
+    color: white; 
+    text-decoration: none; 
+    font-size: 1.2rem; /* Size of the icon */
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover { 
+    background: var(--accent-yellow); 
+    color: var(--primary-green); 
+    transform: translateY(-3px); 
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+               <a href="index.html" class="logo"><img src="photo/logo.jpeg" alt="Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;  border-radius: 50%;">Stroke Action Rwanda</a>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Home</a>
+                     <a href="about.html">About Us</a>
+                    <a href="prevention.html">Prevention</a>
+                    <a href="clinical-research.html">Research</a>
+                    <a href="support.html">Support</a>
+                    <a href="stories.html">Stories</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="event.html">Event</a>
+                    <a href="donate.html" class="btn btn-yellow" style="padding: 10px 20px; width: auto;">Donate</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Your Support Saves Lives</h1>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: rgba(255,255,255,0.9);">
+               Stroke is a leading cause of mortality and long-term disability. It places a significant medical, social, and economic burden on individuals, families, and health systems. Your donation supports evidence-based stroke prevention, early recognition initiatives, rehabilitation services, and community-based recovery programs across Rwanda.
+
+By investing in stroke action, you contribute to reducing preventable deaths, minimizing disability, and strengthening organized stroke care systems.
+
+            </p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="donate-flex">
+                <div class="donate-info">
+                    <h2>Why Your Contribution Matters</h2>
+                    <p>Stroke is largely preventable, treatable when managed rapidly, and recoverable with appropriate rehabilitation. Sustainable progress depends on strong community awareness, trained health professionals, and structured post-stroke support services.
+
+Every contribution directly strengthens our capacity to reach underserved and high-risk populations with life-saving education and support aligned with global stroke care standards.
+</p>
+                    
+                    <ul class="impact-list">
+                        <li><strong>Prevention:</strong>Supporting population-level risk reduction strategies, including blood pressure awareness, lifestyle education, and recognition of early neurological warning signs.</li>
+                        <li><strong>Education:</strong> Building healthcare capacity through training in stroke identification, referral pathways, and evidence-informed acute stroke response.</li>
+                        <li><strong>Recovery:</strong> Expanding access to multidisciplinary rehabilitation resources that improve functional independence and long-term outcomes.</li>
+                        <li><strong>Support:</strong> Expanding access to multidisciplinary rehabilitation resources that improve functional independence and long-term outcomes.</li>
+                    </ul>
+
+                    <div style="background: var(--primary-green); color: white; padding: 30px; border-radius: 15px; margin-top: 40px;">
+                        <h4 style="color: var(--accent-yellow); margin-bottom: 10px;">Trust & Privacy</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">All donations are processed through secure, encrypted payment systems that meet recognized data protection standards. Personal information is handled with strict confidentiality and used solely for official communication, receipting, and impact reporting purposes.</p>
+                    </div>
+                </div>
+<div class="donate-form-container" id="donationStepper">
+    <div class="step-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 id="stepTitle">Select Amount</h3>
+        <span id="stepIndicator" style="font-size: 0.8rem; font-weight: 700; color: var(--primary-green);">Step 1 of 4</span>
+    </div>
+
+    <form id="multiStepForm">
+        <div class="form-step" id="step1">
+            <div class="amount-grid">
+                <button type="button" class="amount-btn" onclick="setAmount(15000)">15,000 RWF</button>
+                <button type="button" class="amount-btn active" onclick="setAmount(35000)">35,000 RWF</button>
+                <button type="button" class="amount-btn" onclick="setAmount(90000)">90,000 RWF</button>
+                <button type="button" class="amount-btn" onclick="setAmount(150000)">150,000 RWF</button>
+                <button type="button" class="amount-btn" onclick="setAmount(250000)">250,000 RWF</button>
+                <button type="button" class="amount-btn" onclick="setAmount(500000)">500,000 RWF</button>
+            </div>
+            <div class="form-group">
+                <label>Custom Amount (RWF)</label>
+                <input type="number" id="customAmount" placeholder="Enter amount" value="35000">
+            </div>
+            <button type="button" class="btn-yellow" style="width: 100%;" onclick="nextStep(2)">Continue</button>
+        </div>
+
+        <div class="form-step" id="step2" style="display: none;">
+            <div class="form-group">
+                <input type="text" id="firstName" placeholder="First Name" required style="margin-bottom: 10px;">
+                <input type="text" id="lastName" placeholder="Last Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="donorEmail" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="donorPhone" placeholder="+250 789 000 000">
+            </div>
+            <button type="button" class="btn-yellow" style="width: 100%;" onclick="nextStep(3)">Continue</button>
+            <p onclick="nextStep(1)" style="text-align: center; cursor: pointer; font-size: 0.8rem; margin-top: 15px;">← Back</p>
+        </div>
+
+        <div class="form-step" id="step3" style="display: none;">
+            <div class="form-group">
+                <input type="text" placeholder="Street Address" style="margin-bottom: 10px;">
+                <input type="text" placeholder="Town or City" style="margin-bottom: 10px;">
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" placeholder="State/Kigali">
+                    <input type="text" placeholder="Zip Code">
+                </div>
+            </div>
+            <button type="button" class="btn-yellow" style="width: 100%;" onclick="nextStep(4)">Continue</button>
+            <p onclick="nextStep(2)" style="text-align: center; cursor: pointer; font-size: 0.8rem; margin-top: 15px;">← Back</p>
+        </div>
+
+        <div class="form-step" id="step4" style="display: none;">
+    <div class="form-group" style="background: white; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
+        <label>Summary</label>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">You are about to donate using our secure partner, Flutterwave. You can pay via <strong>Mobile Money, Card, or Google Pay</strong> in the next window.</p>
+    </div>
+    
+    <div style="display: flex; justify-content: space-between; font-weight: 700; margin: 20px 0; font-size: 1.2rem;">
+        <span>Total:</span>
+        <span id="finalAmountDisplay" style="color: var(--primary-green);">35,000 RWF</span>
+    </div>
+
+    <button type="button" class="btn-yellow" style="width: 100%;" onclick="finishPayment()">Confirm & Pay Now</button>
+    <p onclick="nextStep(3)" style="text-align: center; cursor: pointer; font-size: 0.8rem; margin-top: 15px;">← Back to Address</p>
+</div>
+    </form>
+</div>
+
+                   
+
+            <div style="margin-top: 100px;">
+                <h2 style="text-align: center;">How the Process Works</h2>
+                <div class="process-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>Choose Amount</h4>
+                        <p style="font-size: 0.85rem;">Select the contribution level that supports stroke prevention, treatment awareness, and rehabilitation services.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>Details</h4>
+                        <p style="font-size: 0.85rem;">Provide the required information to generate your official receipt and receive transparent impact updates.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>Secure Payment</h4>
+                        <p style="font-size: 0.85rem;">Complete your donation through our trusted and encrypted payment partners.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h4>Impact</h4>
+                        <p style="font-size: 0.85rem;">Receive confirmation of your contribution and periodic updates demonstrating how funds are allocated to prevention, education, rehabilitation, and caregiver support initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h2 style="color: white; margin-bottom: 20px;">Stroke Action Rwanda</h2>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px;">Working to prevent stroke, ensure early treatment, and support long-term recovery for individuals and families across Rwanda.</p>
+                  <div class="social-icons">
+    <a href="https://x.com/strokeaction_rw?s=11" target="_blank" aria-label="Twitter">
+        <i class="fa-brands fa-x-twitter"></i>
+    </a>
+    
+    <a href="https://www.facebook.com/share/1C4ojJXViC" target="_blank" aria-label="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+    </a>
+    
+    <a href="https://www.instagram.com/strokeaction_rw" target="_blank" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+    
+    <a href="https://m.youtube.com/@250SAR" target="_blank" aria-label="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+    </a>
+</div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                   <strong> <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="signs.html">Warning Signs</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul></strong>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                   <strong> <ul>
+                        <li><a href="caregiver_guides.html">Caregiver Guides</a></li>
+                        <li><a href="rehabilitation.html">Rehabilitation</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul></strong>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 20px;">Stay informed on stroke prevention and recovery.</p>
+                    <form style="display:flex;">
+                        <input type="email" placeholder="Your Email" style="padding: 12px; border: none; border-radius: 4px 0 0 4px; width: 100%;">
+                        <button type="submit" style="background: var(--accent-yellow); border: none; padding: 12px 20px; border-radius: 0 4px 4px 0; font-weight: 700; cursor: pointer;">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 60px; color: rgba(255,255,255,0.4); font-size: 0.8rem;">
+                <p>&copy; 2026 Stroke Action Rwanda. All rights reserved. | <a href="privacy.html" style="color: inherit;">Privacy Policy</a> | <a href="terms.html" style="color: inherit;">Terms of Use</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+let currentStep = 1;
+
+function setAmount(val) {
+    document.getElementById('customAmount').value = val;
+    // Update button visual state
+    document.querySelectorAll('.amount-btn').forEach(btn => {
+        btn.classList.remove('active');
+        // Match value with button text
+        if(btn.innerText.includes(val.toLocaleString())) btn.classList.add('active');
+    });
+}
+
+function nextStep(step) {
+    // Basic Validation for Step 2
+    if (step === 3) {
+        const email = document.getElementById('donorEmail').value;
+        const name = document.getElementById('firstName').value;
+        if (!email || !name) {
+            alert("Please provide your name and email to continue.");
+            return;
+        }
+    }
+
+    // Hide all steps
+    document.querySelectorAll('.form-step').forEach(div => div.style.display = 'none');
+    
+    // Show target step
+    document.getElementById('step' + step).style.display = 'block';
+    
+    // Update UI
+    currentStep = step;
+    document.getElementById('stepIndicator').innerText = `Step ${step} of 4`;
+    
+    const titles = ["Select Amount", "Enter Details", "Your Address", "Review & Pay"];
+    document.getElementById('stepTitle').innerText = titles[step-1];
+
+    if(step === 4) {
+        let amt = document.getElementById('customAmount').value;
+        document.getElementById('finalAmountDisplay').innerText = Number(amt).toLocaleString() + " RWF";
+    }
+}
+
+function finishPayment() {
+    const donorAmount = document.getElementById('customAmount').value;
+    const donorEmail = document.getElementById('donorEmail').value;
+    const donorFirstName = document.getElementById('firstName').value;
+    const donorLastName = document.getElementById('lastName').value;
+    const donorPhone = document.getElementById('donorPhone').value;
+
+    const payBtn = document.querySelector('#step4 .btn-yellow');
+    payBtn.innerText = "Processing...";
+    payBtn.disabled = true;
+
+    FlutterwaveCheckout({
+    // Replace this line:
+    public_key: "FLWSECK_TEST-80d27422ceabc28ac3c7015da8830d89-X", 
+    
+    tx_ref: "SAR-" + Date.now(),
+    // ... rest of your code
+        amount: donorAmount,
+        currency: "RWF",
+        // UPDATED: Added mpesa, banktransfer, applepay, and ussd
+        payment_options: "card, mobilemoneyrwanda, mpesa, banktransfer, applepay, googlepay, ussd, barter",
+        customer: {
+            email: donorEmail,
+            phone_number: donorPhone,
+            name: donorFirstName + " " + donorLastName,
+        },
+        customizations: {
+            title: "Stroke Action Rwanda",
+            description: "Support for Stroke Prevention",
+            // 2. LOGO: Ensure this points to your live GitHub image path
+            logo: "https://wizzysabin-png.github.io/stroke-action-rwanda/photo/logo.jpeg", 
+        },
+        callback: function (data) {
+            // 3. SUCCESS REDIRECT
+            if (data.status === "successful") {
+                // Make sure you create this file or change it to "index.html"
+                window.location.href = "thank-you.html?status=success"; 
+            } else {
+                alert("Payment was not successful. Please try again.");
+                payBtn.innerText = "Confirm & Pay Now";
+                payBtn.disabled = false;
+            }
+        },
+        onclose: function() {
+            payBtn.innerText = "Confirm & Pay Now";
+            payBtn.disabled = false;
+        }
+    });
+}
+
+ function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
+
+

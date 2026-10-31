@@ -1,0 +1,65 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.11/iframeResizer.contentWindow.min.js"></script>
+
+<iframe 
+
+  id="espCtEmbed"
+
+  src="https://clinicaltrials.globalhearthub.org/en/search"
+
+  style="width: 100%; min-width: 100%; border: none; background: white; min-height: 1000px;"
+
+  loading="lazy"
+
+  scrolling="no">
+
+</iframe>
+
+<script 
+
+  src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.11/iframeResizer.min.js"
+
+  integrity="sha512-9kUjCzb6YMm8ZUz/aznqO+9C8QHGr6CLFm654REUYPj2zJzuBoRMygSYhs+vXUQRRJprKjzgxkrdOLTSNhmMag=="
+
+  crossorigin="anonymous" 
+
+  referrerpolicy="no-referrer">
+
+</script>
+
+<script>
+
+  window.addEventListener('load', function () {
+
+    if (window.iFrameResize) {
+
+      iFrameResize({
+
+        checkOrigin: false,
+
+        heightCalculationMethod: 'lowestElement',
+
+        tolerance: 50,
+
+        minHeight: 1000,
+
+        scrolling: false,
+
+        warningTimeout: 0,
+
+        onResized: function(data) {
+
+          console.log('iFrame resized:', data.height);
+
+        }
+
+      }, '#espCtEmbed');
+
+    } else {
+
+      document.getElementById('espCtEmbed').style.height = '1200px';
+
+    }
+
+  });
+
+</script>
