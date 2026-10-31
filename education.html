@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Education | Stroke Action Rwanda</title>
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon_io/favicon.ico">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- SHARED CORE THEME --- */
+        :root {
+            --primary-green: #1B391B; 
+            --accent-yellow: #F2D022; 
+            --soft-bg: #F8FAF8;
+            --white: #ffffff;
+            --text-dark: #1A1A1A;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.8; background-color: var(--white); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--primary-green); }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 60px 0; }
+        
+        /* --- NAVIGATION --- */
+        header { background: var(--primary-green); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 2000; }
+        nav { display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo { font-size: 1.1rem; font-weight: 800; color: var(--white); text-transform: uppercase; text-decoration: none; z-index: 2001; }
+        
+        /* Mobile Menu Toggle */
+        .menu-btn { display: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 2001; }
+
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-yellow); }
+        .btn-yellow { background: var(--accent-yellow); color: var(--primary-green); padding: 10px 20px; border-radius: 6px; font-weight: 700; text-decoration: none; text-align: center; }
+
+        /* --- EDUCATION SPECIFIC --- */
+        .page-header { 
+            background: linear-gradient(rgba(27, 57, 27, 0.8), rgba(27, 57, 27, 0.8)), url('https://placehold.co/1200x600/1B391B/white?text=Empower+Through+Knowledge');
+            background-size: cover; background-position: center; padding: 140px 0 80px; color: white; text-align: center;
+        }
+        .page-header h1 { color: var(--accent-yellow); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 10px; }
+
+        .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .edu-card { background: var(--soft-bg); border-radius: 15px; overflow: hidden; border: 1px solid #eee; transition: var(--transition); display: flex; flex-direction: column; }
+        .edu-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .edu-content { padding: 25px; flex-grow: 1; }
+        .edu-image { width: 100%; height: 220px; object-fit: cover; }
+
+        .study-options { background: var(--primary-green); color: white; border-radius: 20px; padding: 40px; margin: 60px 0; display: flex; gap: 25px; flex-wrap: wrap; }
+        .option-box { flex: 1; min-width: 260px; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 12px; border-left: 4px solid var(--accent-yellow); display: flex; flex-direction: column; justify-content: space-between; }
+        .option-box h3 { color: var(--accent-yellow); margin-bottom: 15px; }
+
+        .video-tape-section { margin-top: 60px; }
+        .video-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .video-thumb { position: relative; border-radius: 10px; overflow: hidden; background: #000; height: 180px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .play-btn { font-size: 3rem; color: var(--accent-yellow); opacity: 0.8; transition: 0.3s; }
+        .video-thumb:hover .play-btn { opacity: 1; transform: scale(1.1); }
+
+        /* --- RESPONSIVE BREAKPOINTS --- */
+        @media (max-width: 992px) {
+            .menu-btn { display: block; }
+            .nav-links { 
+                position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; 
+                background: var(--primary-green); flex-direction: column; padding: 100px 30px; 
+                transition: 0.5s; box-shadow: -10px 0 30px rgba(0,0,0,0.3); 
+            }
+            .nav-links.active { right: 0; }
+            .study-options { padding: 30px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .page-header { padding: 120px 0 60px; }
+            .option-box { min-width: 100%; }
+            .btn-yellow { width: 100%; display: block; }
+        }
+    </style>
+<style id="sar-upgrade">
+:root{--sar-green:#1B391B;--sar-yellow:#F2D022;--sar-ink:#18231a;--sar-muted:#647067;--sar-paper:#F8FAF8;--sar-radius:22px;--sar-shadow:0 18px 50px rgba(22,49,27,.12);--sar-ease:cubic-bezier(.2,.75,.25,1)}
+html{scroll-behavior:smooth;scroll-padding-top:100px}body{background:#fff;color:var(--sar-ink);overflow-x:hidden}img{max-width:100%;height:auto}a,button{ -webkit-tap-highlight-color:transparent}button,input,textarea,select{font:inherit}
+.sar-language{height:auto;min-height:38px;background:#102713;color:#fff;display:flex;justify-content:flex-end;align-items:center;gap:7px;padding:5px max(22px,calc((100vw - 1200px)/2));font-size:11px;letter-spacing:.06em;text-transform:uppercase}.sar-language>span{opacity:.65;margin-right:5px}.sar-lang{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;border-radius:999px;padding:4px 10px;cursor:pointer;transition:.25s}.sar-lang:hover,.sar-lang.active{background:var(--sar-yellow);color:var(--sar-green);border-color:var(--sar-yellow)}
+.sar-header{position:sticky!important;top:0!important;z-index:1500!important;background:rgba(27,57,27,.94)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:10px 0!important;box-shadow:0 8px 30px rgba(0,0,0,.13)!important;border-bottom:1px solid rgba(255,255,255,.1)}.sar-header.scrolled{padding:7px 0!important}.sar-nav{min-height:58px}.sar-logo{gap:12px!important;font-size:.9rem!important;letter-spacing:.07em!important}.sar-logo img{height:46px!important;width:46px;object-fit:cover;border-radius:15px!important;border:1px solid rgba(242,208,34,.8)!important;box-shadow:0 5px 16px rgba(0,0,0,.18)}.sar-links{gap:clamp(10px,1.45vw,22px)!important}.sar-links a{font-size:clamp(.72rem,.8vw,.86rem)!important;white-space:nowrap}.sar-links a:not(.btn-yellow)::after{height:2px!important}.sar-links .btn-yellow{padding:10px 18px!important;border-radius:999px!important;box-shadow:0 7px 18px rgba(242,208,34,.18)}.sar-menu{display:none!important;border:0;background:transparent;color:white;cursor:pointer;padding:9px}.sar-menu span{display:block;width:23px;height:2px;background:#fff;margin:5px;border-radius:3px;transition:.25s}
+.sar-footer{background:linear-gradient(135deg,#102713,#1B391B 65%,#244a27);color:rgba(255,255,255,.78);padding:68px 0 20px;margin-top:60px}.sar-footer .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px}.sar-footer h2,.sar-footer h4{color:#fff!important}.sar-footer h4{font-size:.94rem;margin:8px 0 18px}.sar-footer p{font-size:.88rem;line-height:1.8;color:rgba(255,255,255,.67)}.sar-footer ul{list-style:none;padding:0}.sar-footer li{margin:10px 0}.sar-footer li a{color:rgba(255,255,255,.72);font-size:.86rem;text-decoration:none;transition:.2s}.sar-footer li a:hover{color:var(--sar-yellow);padding-left:4px}.sar-footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}.sar-footer-brand img{width:48px;height:48px;object-fit:cover;border-radius:14px}.sar-footer-brand h2{font-size:1rem!important;margin:0!important}.sar-footer .social-icons{display:flex;gap:10px;margin-top:20px}.sar-footer .social-icons a{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.1);color:#fff;transition:.25s}.sar-footer .social-icons a:hover{background:var(--sar-yellow);color:var(--sar-green);transform:translateY(-4px)}.sar-footer-note{margin-top:18px;font-size:.8rem!important}.sar-footer .footer-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:42px;padding-top:18px;text-align:center}.sar-footer .footer-bottom p{font-size:.78rem;margin:0}.sar-top{position:fixed;right:22px;bottom:22px;width:44px;height:44px;display:grid;place-items:center;background:var(--sar-yellow);color:var(--sar-green);border-radius:15px;font-size:22px;font-weight:800;text-decoration:none;box-shadow:0 9px 24px rgba(0,0,0,.16);z-index:900;opacity:0;pointer-events:none;transform:translateY(10px);transition:.25s}.sar-top.visible{opacity:1;pointer-events:auto;transform:none}
+/* Soft 3D surface language */
+.card,.info-card,.step-card,.donate-form-container,.contact-form,.program-card,.gallery-item,.team-card,.value-card,.feature-card{border-radius:var(--sar-radius);transition:transform .35s var(--sar-ease),box-shadow .35s var(--sar-ease),border-color .35s}.card:hover,.info-card:hover,.step-card:hover,.program-card:hover,.gallery-item:hover,.team-card:hover,.value-card:hover,.feature-card:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(27,57,27,.13)}.contact-form,.donate-form-container{box-shadow:0 18px 48px rgba(27,57,27,.1)!important;border:1px solid rgba(27,57,27,.08)}input,textarea,select{max-width:100%}input:focus,textarea:focus,select:focus{outline:0!important;border-color:var(--sar-green)!important;box-shadow:0 0 0 4px rgba(27,57,27,.09)!important}img{border-radius:inherit}.sar-reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--sar-ease),transform .7s var(--sar-ease)}.sar-reveal.in-view{opacity:1;transform:none}
+/* Page-specific polish */
+.contact-hero,.page-header{position:relative;isolation:isolate}.contact-wrapper{align-items:start}.contact-info{position:relative}.info-card{border:1px solid rgba(27,57,27,.07);border-left:4px solid var(--sar-yellow)}.contact-form{border-radius:24px}.contact-form input,.contact-form textarea,.donate-form-container input,.donate-form-container select{border-radius:12px;padding:14px}.submit-btn,.btn-yellow,.btn,.amount-btn{transition:transform .25s var(--sar-ease),box-shadow .25s,background .25s}.submit-btn:hover,.btn-yellow:hover,.btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(27,57,27,.16)}.donate-flex{align-items:stretch}.donate-form-container{background:linear-gradient(145deg,#fff,#f4f8f3)!important}.amount-btn{border-radius:12px!important}.amount-btn:hover,.amount-btn.active{transform:translateY(-2px);box-shadow:0 8px 18px rgba(27,57,27,.15)}
+/* image card consistency */
+main img,.section-padding img{object-fit:cover} .gallery-item img,.team-card img,.program-card img{width:100%;aspect-ratio:4/3;object-fit:cover}.social-icons a{transition:transform .25s,background .25s}
+@media(max-width:1050px){.sar-menu{display:block!important}.sar-links{position:fixed!important;top:0;right:0;bottom:0;width:min(360px,88vw);height:100dvh;background:rgba(16,39,19,.98);backdrop-filter:blur(18px);display:flex!important;flex-direction:column;align-items:stretch!important;justify-content:flex-start;gap:5px!important;padding:105px 28px 35px!important;overflow-y:auto;box-shadow:-20px 0 55px rgba(0,0,0,.2);transform:translateX(110%);visibility:hidden;transition:transform .35s var(--sar-ease),visibility .35s;z-index:1600}.sar-links.open{transform:translateX(0);visibility:visible}.sar-links a{font-size:1rem!important;padding:12px 10px!important;border-bottom:1px solid rgba(255,255,255,.09)}.sar-links .btn-yellow{margin-top:12px;text-align:center}.sar-menu{z-index:1700!important;position:relative}.sar-footer .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.sar-language{justify-content:center}.sar-logo{font-size:.75rem!important}.sar-logo img{height:40px!important;width:40px}.sar-footer{padding:48px 0 18px}.sar-footer .footer-grid{grid-template-columns:1fr;gap:22px}.sar-footer .footer-bottom{margin-top:28px}.contact-wrapper{grid-template-columns:1fr!important;gap:24px!important;padding:35px 0!important}.contact-form,.donate-form-container{padding:24px!important}.donate-flex{gap:24px!important}.amount-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.map-container{height:280px!important}.section-padding{padding-top:55px!important;padding-bottom:55px!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}.sar-reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+    <div class="sar-language" aria-label="Choose language"><span>Language</span><button type="button" class="sar-lang active" data-lang="en" aria-label="English"><span>🇬🇧</span> EN</button><button type="button" class="sar-lang" data-lang="rw" aria-label="Kinyarwanda"><span>🇷🇼</span> RW</button><button type="button" class="sar-lang" data-lang="fr" aria-label="French"><span>🇫🇷</span> FR</button></div>
+<header id="main-header" class="sar-header"><div class="container"><nav class="sar-nav"><a href="index.html" class="logo sar-logo"><img src="photo/logo.jpeg" alt="Stroke Action Rwanda Logo"><span>Stroke Action Rwanda</span></a><button class="menu-toggle sar-menu" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button><div class="nav-links sar-links" id="navLinks"><a href="index.html" data-i18n="home">Home</a><a href="team.html" data-i18n="team">Team</a><a href="prevention.html" data-i18n="prevention">Prevention</a><a href="clinical-research.html" data-i18n="research">Research</a><a href="support.html" data-i18n="support">Support</a><a href="stories.html" data-i18n="stories">Stories</a><a href="gallery.html" data-i18n="gallery">Gallery</a><a href="event.html" data-i18n="events">Events</a><a href="contact.html" data-i18n="contact">Contact</a><a href="donate.html" class="btn-yellow" data-i18n="donate">Donate</a></div></nav></div></header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Stroke Education Center</h1>
+            <p>Empowering Rwanda through knowledge and professional training.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2>Learn About Stroke</h2>
+            <p style="max-width: 800px;">Education is the first step toward prevention and effective recovery. Our curriculum covers biological causes, nutrition, and support.</p>
+            
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <img src="https://placehold.co/600x400/1B391B/white?text=Brain+Health" class="edu-image">
+                    <div class="edu-content">
+                        <h3>Understanding the Brain</h3>
+                        <p>Learn how strokes affect different parts of the brain and what that means for physical function.</p>
+                    </div>
+                </div>
+                <div class="edu-card">
+                    <img src="https://placehold.co/600x400/F2D022/1B391B?text=Nutrition+Care" class="edu-image">
+                    <div class="edu-content">
+                        <h3>Post-Stroke Nutrition</h3>
+                        <p>Specialized dietary guidance to prevent secondary strokes and improve the healing process.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="study-options">
+                <div style="width: 100%; text-align: center; margin-bottom: 10px;">
+                    <h2 style="color: white;">Study Pathways</h2>
+                    <p>Flexible learning for everyone in Rwanda.</p>
+                </div>
+                <div class="option-box">
+                    <div>
+                        <h3>Live Workshops</h3>
+                        <p>Hands-on training sessions with medical experts in Kigali.</p>
+                    </div>
+                    <a href="index.html#contact" class="btn-yellow" style="margin-top: 20px;">Register Live</a>
+                </div>
+                <div class="option-box">
+                    <div>
+                        <h3>Online Portal</h3>
+                        <p>Access our digital library and webinar recordings anywhere.</p>
+                    </div>
+                    <a href="portal.html" class="btn-yellow" style="margin-top: 20px; background: white;">Access Online</a>
+                </div>
+            </div>
+
+            <div class="video-tape-section">
+                <h2>Educational Videos</h2>
+                <div class="video-row">
+                    <div>
+                        <div class="video-thumb">
+                            <span class="play-btn">▶</span>
+                        </div>
+                        <h4 style="margin-top: 15px;">Signs in Kinyarwanda</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">Local community awareness.</p>
+                    </div>
+                    <div>
+                        <div class="video-thumb">
+                            <span class="play-btn">▶</span>
+                        </div>
+                        <h4 style="margin-top: 15px;">Physical Therapy Tips</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">Home-based recovery exercises.</p>
+                    </div>
+                    <div>
+                        <div class="video-thumb">
+                            <span class="play-btn">▶</span>
+                        </div>
+                        <h4 style="margin-top: 15px;">Emergency Actions</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">What to do in the first hour.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="sar-footer"><div class="container"><div class="footer-grid"><div class="footer-col"><div class="sar-footer-brand"><img src="photo/logo.jpeg" alt="Stroke Action Rwanda logo"><h2>Stroke Action Rwanda</h2></div><p>Working to prevent stroke, ensure early treatment, and support long-term recovery for individuals and families across Rwanda.</p><div class="social-icons"><a href="https://x.com/strokeaction_rw?s=11" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a><a href="https://www.facebook.com/share/1C4ojJXViC" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.instagram.com/strokeaction_rw" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://m.youtube.com/@250SAR" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="team.html">Our Team</a></li><li><a href="programs.html">Programs</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="event.html">Events</a></li></ul></div><div class="footer-col"><h4>Stroke Support</h4><ul><li><a href="signs.html">Warning Signs</a></li><li><a href="prevention.html">Prevention</a></li><li><a href="rehabilitation.html">Rehabilitation</a></li><li><a href="caregiver_guides.html">Caregiver Guides</a></li><li><a href="get-involved.html">Get Involved</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="partner.html">Partnerships</a></li><li><a href="donate.html">Donate</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Use</a></li></ul><p class="sar-footer-note">Together, we can build a stroke-aware and stroke-resilient Rwanda.</p></div></div><div class="footer-bottom"><p>© 2026 Stroke Action Rwanda. All rights reserved.</p></div></div></footer><a class="sar-top" href="#top" aria-label="Back to top">↑</a>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+    </script>
+<script id="sar-upgrade-js">
+(()=>{const header=document.querySelector('.sar-header'),menu=document.querySelector('.sar-menu'),links=document.querySelector('.sar-links'),top=document.querySelector('.sar-top');const close=()=>{links?.classList.remove('open');menu?.setAttribute('aria-expanded','false');document.body.classList.remove('sar-menu-open')};menu?.addEventListener('click',()=>{const open=!links.classList.contains('open');links.classList.toggle('open',open);menu.setAttribute('aria-expanded',String(open));document.body.classList.toggle('sar-menu-open',open)});links?.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});document.addEventListener('click',e=>{if(links?.classList.contains('open')&&!links.contains(e.target)&&!menu?.contains(e.target))close()});const scroll=()=>{header?.classList.toggle('scrolled',window.scrollY>30);top?.classList.toggle('visible',window.scrollY>450)};window.addEventListener('scroll',scroll,{passive:true});scroll();document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(href?.startsWith('#')&&href.length>1){a.addEventListener('click',e=>{const target=document.querySelector(href);if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}})}});if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('main section, .contact-wrapper, .donate-flex, .footer-col').forEach(el=>el.classList.add('sar-reveal'));document.querySelectorAll('.sar-reveal').forEach(el=>io.observe(el))}
+const dict={en:{home:'Home',team:'Team',prevention:'Prevention',research:'Research',support:'Support',stories:'Stories',gallery:'Gallery',events:'Events',contact:'Contact',donate:'Donate'},rw:{home:'Ahabanza',team:'Itsinda',prevention:'Kwirinda',research:'Ubushakashatsi',support:'Ubufasha',stories:'Inkuru',gallery:'Amafoto',events:'Ibikorwa',contact:'Twandikire',donate:'Tanga inkunga'},fr:{home:'Accueil',team:'Équipe',prevention:'Prévention',research:'Recherche',support:'Soutien',stories:'Témoignages',gallery:'Galerie',events:'Événements',contact:'Contact',donate:'Faire un don'}};const buttons=document.querySelectorAll('.sar-lang');const setLang=l=>{const d=dict[l]||dict.en;document.documentElement.lang=l==='rw'?'rw':l;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k])el.textContent=d[k]});buttons.forEach(b=>b.classList.toggle('active',b.dataset.lang===l));try{localStorage.setItem('sar-language',l)}catch(e){}};buttons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));let saved='en';try{saved=localStorage.getItem('sar-language')||'en'}catch(e){}setLang(saved);})();
+</script>
+</body>
+
+</html>
+
